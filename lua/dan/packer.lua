@@ -58,5 +58,14 @@ return require('packer').startup(function(use)
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  use ('rstacruz/vim-closer')
+
+  use ('nvim-lua/plenary.nvim')
+
+  use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim"
+  }
+
 end)
 

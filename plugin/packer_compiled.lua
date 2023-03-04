@@ -175,10 +175,20 @@ _G.packer_plugins = {
     path = "C:\\Users\\danie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["todo-comments.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\danie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\todo-comments.nvim",
+    url = "https://github.com/folke/todo-comments.nvim"
+  },
   undotree = {
     loaded = true,
     path = "C:\\Users\\danie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\undotree",
     url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-closer"] = {
+    loaded = true,
+    path = "C:\\Users\\danie\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-closer",
+    url = "https://github.com/rstacruz/vim-closer"
   },
   ["vim-fugitive"] = {
     loaded = true,
