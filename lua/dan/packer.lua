@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  -- Using Packer
   use({
 	  'navarasu/onedark.nvim',
 	  as = 'onedark',
@@ -58,7 +57,7 @@ return require('packer').startup(function(use)
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
-  use ('rstacruz/vim-closer')
+  use ('windwp/nvim-autopairs')
 
   use ('nvim-lua/plenary.nvim')
 
