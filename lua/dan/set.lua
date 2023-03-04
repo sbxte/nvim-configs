@@ -1,5 +1,17 @@
 vim.g.mapleader = " "
-
+vim.g.guicursor = {
+  n = "block",
+  v = "block",
+  c = "block",
+  i = "ver25",
+  ci = "ver25",
+  ve = "ver25",
+  r = "hor20",
+  cr = "hor20",
+  o = "hor50",
+  a = "blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+  sm = "block-blinkwait175-blinkoff150-blinkon175"
+}
 vim.opt.nu = true
 vim.opt.rnu = true
 
