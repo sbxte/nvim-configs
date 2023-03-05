@@ -35,6 +35,7 @@ lsp.on_attach( function(client,bufnr)
 	vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
 	vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+	vim.keymap.set("n", ";", function() vim.lsp.buf.code_action() end, opts)
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 end)
 
