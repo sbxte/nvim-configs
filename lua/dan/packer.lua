@@ -68,5 +68,7 @@ return require('packer').startup(function(use)
 
   use ('andweeb/presence.nvim') -- lmfaoaoaoaoao
 
+  use ('lervag/vimtex')
+
 end)
 
