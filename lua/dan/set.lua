@@ -52,11 +52,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 
-vim.keymap.set("n", "tt", ":tabnew<CR>")
+vim.keymap.set("n", "tn", ":tabnew<CR>")
 vim.keymap.set("n", "tc", ":tabclose<CR>")
+vim.keymap.set("n", "tt", ":tabn<CR>")
+vim.keymap.set("n", "tT", ":tabp<CR>")
 
--- vim.keymap.set("i", "<C-c>", "<Esc>")
--- <C-[> instead
+vim.keymap.set("i", "<C-c>", "<Esc>") -- <C-[> is available too btw
 
 
 -- Git Fugitive
