@@ -7,51 +7,98 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+
+  -- Telescope
+  use ("nvim-lua/popup.nvim")
+  use ('nvim-lua/plenary.nvim')
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use({
-	  'navarasu/onedark.nvim',
-	  as = 'onedark',
-	  config = function()
-		  vim.cmd('colorscheme onedark')
-	  end
-  })
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    -- NOTE: If you are having trouble with this installation,
+    --       refer to the README for telescope-fzf-native for more instructions.
+    build = 'make',
+    cond = function()
+      return vim.fn.executable 'make' == 1
+    end,
+  }
 
-  use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+
+  -- Theme (One dark)
+  use {
+    'navarasu/onedark.nvim',
+    as = 'onedark',
+    config = function()
+      vim.cmd('colorscheme onedark')
+    end
+  }
+
+
+  -- Tree sitter
+  use { -- Highlight, edit, and navigate code
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    config = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+  }
   use ('nvim-treesitter/playground')
-
-  use ('mbbill/undotree')
-  use ('tpope/vim-fugitive')
   use("nvim-treesitter/nvim-treesitter-context")
 
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},             -- Required
-		  {'williamboman/mason.nvim'},           -- Optional
-		  {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},         -- Required
-		  {'hrsh7th/cmp-nvim-lsp'},     -- Required
-		  {'hrsh7th/cmp-buffer'},       -- Optional
-		  {'hrsh7th/cmp-path'},         -- Optional
-		  {'saadparwaiz1/cmp_luasnip'}, -- Optional
-		  {'hrsh7th/cmp-nvim-lua'},     -- Optional
+  -- Git and history stuff
+  use ('mbbill/undotree')
+  use ('tpope/vim-fugitive')
+  use ('tpope/vim-rhubarb')
 
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},             -- Required
-		  {'rafamadriz/friendly-snippets'}, -- Optional
-	  }
+  use { -- Adds git releated signs to the gutter, as well as utilities for managing changes
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      -- See `:help gitsigns.txt`
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
   }
 
-  use({
+
+  -- LSP
+  use ('williamboman/mason.nvim')
+  use ('williamboman/mason-lspconfig.nvim')
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require("fidget").setup()
+    end
+  }
+  use ('folke/neodev.nvim')
+  use ('neovim/nvim-lspconfig')
+
+  -- Auto complete
+  use ('hrsh7th/nvim-cmp')
+  use ('hrsh7th/cmp-nvim-lsp')
+  use ('L3MON4D3/LuaSnip')
+  use ('saadparwaiz1/cmp_luasnip')
+  use ('hrsh7th/vim-vsnip')
+
+  use { 'folke/which-key.nvim', opts = {} } -- Uhhh. Keybinds?
+
+
+  -- "gc" to comment visual regions/lines
+  use { 'numToStr/Comment.nvim', opts = {} }
+
+
+  -- Trouble (quickfix thing)
+  use {
     "folke/trouble.nvim",
     config = function()
       require("trouble").setup {
@@ -61,27 +108,39 @@ return require('packer').startup(function(use)
         -- refer to the configuration section below
       }
     end
-  })
-
-  use ('kyazdani42/nvim-web-devicons')
-
-  use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+
+  -- Lua line status bar
+  use ('kyazdani42/nvim-web-devicons')
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
+
+  -- Auto pair brackets and quotes
   use ('windwp/nvim-autopairs')
 
-  use ('nvim-lua/plenary.nvim')
+  -- Tab stop
+  use ('tpope/vim-sleuth')
 
+  -- Todo comments
   use {
-      "folke/todo-comments.nvim",
-      requires = "nvim-lua/plenary.nvim"
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim"
   }
 
+
+  -- Discord presence
   use ('andweeb/presence.nvim') -- lmfaoaoaoaoao
 
+
+  -- Vim tex (math go brr)
   use ('lervag/vimtex')
 
+
+  -- Additional features for rust
+  use ("simrat39/rust-tools.nvim")
 end)
 
