@@ -8,19 +8,34 @@ lsp.ensure_installed({
 	'rust_analyzer'
 })
 
+-- Fix Undefined global 'vim'
+lsp.configure('lua-language-server', {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-f>'] = cmp.mapping.scroll_docs(4),
   ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-	['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
 	['<C-y>'] = cmp.mapping.confirm({ select = true }),
 	['<C-Space>'] = cmp.mapping.complete(),
 })
 
 lsp.set_preferences({
-	sign_icons = { }
+  suggest_lsp_servers = false,
+  sign_icons = {
+    error = 'E',
+    warn = 'W',
+    hint = 'H',
+    info = 'I'
+  }
 })
 
 lsp.setup_nvim_cmp({
@@ -43,11 +58,15 @@ lsp.on_attach( function(client,bufnr)
   vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
   vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
   vim.keymap.set('n', 'gt', function() vim.lsp.buf.type_definition() end, opts)
-  vim.keymap.set("n", ";;", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", ";a", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', ';r', function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set('n', ';f', function() vim.lsp.buf.formatting() end, opts)
   vim.keymap.set('n', ';e', function() vim.diagnostic.open_float() end, opts)
 end)
 
 lsp.setup()
+
+vim.diagnostic.config({
+  virtual_text = true
+})
 

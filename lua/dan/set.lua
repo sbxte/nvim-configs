@@ -65,7 +65,6 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 
 
 -- Todo comments
-
 vim.keymap.set("n", "[t", function()
   require("todo-comments").jump_prev({keywords = { "TODO", "ERROR", "WARNING" }})
 end, { desc = "Previous todo/warning/error todo comment" })
@@ -73,3 +72,25 @@ end, { desc = "Previous todo/warning/error todo comment" })
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next({keywords = { "TODO", "ERROR", "WARNING" }})
 end, { desc = "Next todo/error/warning todo comment" })
+
+
+-- Trouble
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+  {silent = true, noremap = true}
+)
+
+-- Telescope
+
+vim.keymap.set('n', '<leader>pf', function()
+  require("telescope.builtin").find_files() end, {})
+vim.keymap.set('n', '<C-p>', function()
+  require("telescope.builtin").git_files() end, {})
+vim.keymap.set('n', '<leader>ps', function() 
+	require("telescope.builtin").grep_string({ 
+    search = vim.fn.input("Grep > ") 
+}) end)
+
+-- Undotree
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+  {silent = true, noremap = true}
+)
