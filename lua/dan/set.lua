@@ -59,6 +59,7 @@ vim.keymap.set("n", "tT", ":tabp<CR>")
 
 vim.keymap.set("i", "<C-c>", "<Esc>") -- <C-[> is available too btw
 
+vim.keymap.set("n", "Q", "<Nop>")
 
 -- Git Fugitive
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
