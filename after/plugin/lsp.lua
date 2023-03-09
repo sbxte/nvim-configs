@@ -63,6 +63,14 @@ local rustopts = {
       },
     },
   },
+
+  -- Installed sources
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "vsnip" },
+    { name = "path" },
+    { name = "buffer" },
+  },
 }
 
 require("rust-tools").setup(rustopts)
