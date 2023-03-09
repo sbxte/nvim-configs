@@ -45,6 +45,7 @@ vim.o.timeoutlen = 300
 -- Custom remaps
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "[E]xplorer"})
 vim.keymap.set("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/dan/set.lua<CR>", { desc = "Neo[V]im [C]onfig [S]et.lua"})
+vim.keymap.set("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/dan/packer.lua<CR>", { desc = "Neo[V]im [C]onfig [P]acker.lua"})
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
