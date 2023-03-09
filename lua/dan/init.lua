@@ -1,2 +1,2 @@
-require("dan.set")
 require("dan.packer")
+require("dan.set")
