@@ -43,7 +43,7 @@ vim.o.timeoutlen = 300
 
 
 -- Custom remaps
-vim.keymap.set("n", "<leader>ex", vim.cmd.Ex, { desc = "[Ex]plorer"})
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "[E]xplorer"})
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
