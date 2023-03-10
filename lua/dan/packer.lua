@@ -83,10 +83,18 @@ return require('packer').startup(function(use)
 
   -- Auto complete
   use ('hrsh7th/nvim-cmp')
-  use ('hrsh7th/cmp-nvim-lsp')
+  -- LSP completion source:
+  use 'hrsh7th/cmp-nvim-lsp'
+
+  -- Useful completion sources:
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  use ('hrsh7th/cmp-vsnip')
+  use ('hrsh7th/cmp-path')
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/vim-vsnip'
   use ('L3MON4D3/LuaSnip')
   use ('saadparwaiz1/cmp_luasnip')
-  use ('hrsh7th/vim-vsnip')
 
   use { 'folke/which-key.nvim', opts = {} } -- Uhhh. Keybinds?
 
@@ -113,7 +121,7 @@ return require('packer').startup(function(use)
   use ('kyazdani42/nvim-web-devicons')
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = ('kyazdani42/nvim-web-devicons')
   }
 
 

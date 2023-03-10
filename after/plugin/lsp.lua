@@ -5,25 +5,27 @@ local on_attach = function(_,bufnr)
 
   local nmap = function(keys, func, desc)
     if desc then
-      desc = 'LSP: ' .. desc 
+      desc = 'LSP: ' .. desc
     end
     vim.keymap.set('n', keys, func, { buffer = bufnr, remap = false, desc = desc })
   end
 
-  nmap("<C-h>", vim.lsp.buf.signature_help, 'Signature Documentation (Help)')
+  local tsbuiltin = require('telescope.builtin')
+
+  nmap("<C-k>", vim.lsp.buf.signature_help, 'Signature Documentation (Help)')
   nmap("]d", vim.diagnostic.goto_next, "Goto previous diag message")
   nmap("[d", vim.diagnostic.goto_prev, "Goto next diag message")
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-  nmap('gd', vim.lsp.buf.definition, "[G]oto [D]efinition")
-  nmap('gi', vim.lsp.buf.implementation, "[G]oto [I]implementation")
-  nmap('gr', vim.lsp.buf.references, "[G]oto [R]eferences")
+  nmap('gd', tsbuiltin.lsp_definitions, "[G]oto [D]efinition")
+  nmap('gi', tsbuiltin.lsp_implementations, "[G]oto [I]implementation")
+  nmap('gr', tsbuiltin.lsp_references, "[G]oto [R]eferences")
   nmap('gD', vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-  nmap('gt', vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")
+  nmap('gt', tsbuiltin.lsp_type_definitions, "[G]oto [T]ype Definition")
   nmap(";ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
   nmap(';rn', vim.lsp.buf.rename, "[R]e[n]ame")
   nmap(';f', vim.lsp.buf.format, "[F]ormat")
   nmap(';e', vim.diagnostic.open_float, "Open floating diagnostic message")
-  nmap(';q', vim.diagnostic.setloclist, "Open diagnostics list")
+  nmap(';q', tsbuiltin.diagnostics, "Open diagnostics list")
 
     -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -33,7 +35,8 @@ end
 
 
 -- Additional rust features
-local rustopts = {
+
+require("rust-tools").setup({
   tools = {
     runnables = {
       use_telescope = true,
@@ -66,14 +69,15 @@ local rustopts = {
 
   -- Installed sources
   sources = {
-    { name = "nvim_lsp" },
-    { name = "vsnip" },
-    { name = "path" },
-    { name = "buffer" },
+    { name = 'path' },                              -- file paths
+    { name = 'nvim_lsp', keyword_length = 3 },      -- from language server
+    { name = 'nvim_lsp_signature_help'},            -- display function signatures with current parameter emphasized
+    { name = 'nvim_lua', keyword_length = 2},       -- complete neovim's Lua runtime API such vim.lsp.*
+    { name = 'buffer', keyword_length = 2 },        -- source current buffer
+    { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip 
+    { name = 'calc'},                               -- source for math calculation
   },
-}
-
-require("rust-tools").setup(rustopts)
+})
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -169,3 +173,5 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+
