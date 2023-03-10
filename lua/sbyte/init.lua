@@ -1,14 +1,14 @@
-require("dan.packer")
-require("dan.set")
+require("sbyte.packer")
+require("sbyte.set")
 
 -- Auto cmds
 
 local autocmd = vim.api.nvim_create_autocmd
-local dan = vim.api.nvim_create_augroup('dan', {})
+local sbyte = vim.api.nvim_create_augroup('dan', {})
 
 -- Automatically remove all trailing whitespaces
 autocmd({"BufWritePre"}, {
-    group = dan,
+    group = sbyte,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
