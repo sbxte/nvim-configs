@@ -44,8 +44,8 @@ vim.o.timeoutlen = 300
 
 -- Custom remaps
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "[E]xplorer"})
-vim.keymap.set("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/dan/set.lua<CR>", { desc = "Neo[V]im [C]onfig [S]et.lua"})
-vim.keymap.set("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/dan/packer.lua<CR>", { desc = "Neo[V]im [C]onfig [P]acker.lua"})
+vim.keymap.set("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", { desc = "Neo[V]im [C]onfig [S]et.lua"})
+vim.keymap.set("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", { desc = "Neo[V]im [C]onfig [P]acker.lua"})
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -102,6 +102,8 @@ vim.keymap.set('n', '<leader>sh', tsbuiltin.help_tags, { desc = '[S]earch [H]elp
 vim.keymap.set('n', '<leader>sw', tsbuiltin.grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', tsbuiltin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', tsbuiltin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+vim.keymap.set('n', '<leader>sk', ':Telescope keymaps<CR>') -- I know there probably exists a better way of doing this but am too lazy to find out
 
 -- Undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
