@@ -7,11 +7,11 @@ return require('packer').startup(function(use)
 
 
   -- Telescope
-  use ("nvim-lua/popup.nvim")
-  use ('nvim-lua/plenary.nvim')
+  use("nvim-lua/popup.nvim")
+  use('nvim-lua/plenary.nvim')
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   use {
@@ -45,14 +45,14 @@ return require('packer').startup(function(use)
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   }
-  use ('nvim-treesitter/playground')
+  use('nvim-treesitter/playground')
   use("nvim-treesitter/nvim-treesitter-context")
 
 
   -- Git and history stuff
-  use ('mbbill/undotree')
-  use ('tpope/vim-fugitive')
-  use ('tpope/vim-rhubarb')
+  use('mbbill/undotree')
+  use('tpope/vim-fugitive')
+  use('tpope/vim-rhubarb')
 
   use { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -70,31 +70,31 @@ return require('packer').startup(function(use)
 
 
   -- LSP
-  use ('williamboman/mason.nvim')
-  use ('williamboman/mason-lspconfig.nvim')
+  use('williamboman/mason.nvim')
+  use('williamboman/mason-lspconfig.nvim')
   use {
     'j-hui/fidget.nvim',
     config = function()
       require("fidget").setup()
     end
   }
-  use ('folke/neodev.nvim')
-  use ('neovim/nvim-lspconfig')
+  use('folke/neodev.nvim')
+  use('neovim/nvim-lspconfig')
 
   -- Auto complete
-  use ('hrsh7th/nvim-cmp')
+  use('hrsh7th/nvim-cmp')
   -- LSP completion source:
   use 'hrsh7th/cmp-nvim-lsp'
 
   -- Useful completion sources:
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use ('hrsh7th/cmp-vsnip')
-  use ('hrsh7th/cmp-path')
+  use('hrsh7th/cmp-vsnip')
+  use('hrsh7th/cmp-path')
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/vim-vsnip'
-  use ('L3MON4D3/LuaSnip')
-  use ('saadparwaiz1/cmp_luasnip')
+  use('L3MON4D3/LuaSnip')
+  use('saadparwaiz1/cmp_luasnip')
 
   use { 'folke/which-key.nvim', opts = {} } -- Uhhh. Keybinds?
 
@@ -118,7 +118,6 @@ return require('packer').startup(function(use)
 
 
   -- Lua line status bar
-  use ('kyazdani42/nvim-web-devicons')
   use {
     'nvim-lualine/lualine.nvim',
     requires = ('kyazdani42/nvim-web-devicons')
@@ -126,10 +125,10 @@ return require('packer').startup(function(use)
 
 
   -- Auto pair brackets and quotes
-  use ('windwp/nvim-autopairs')
+  use('windwp/nvim-autopairs')
 
   -- Tab stop
-  use ('tpope/vim-sleuth')
+  use('tpope/vim-sleuth')
 
   -- Todo comments
   use {
@@ -139,14 +138,22 @@ return require('packer').startup(function(use)
 
 
   -- Discord presence
-  use ('andweeb/presence.nvim') -- lmfaoaoaoaoao
+  use('andweeb/presence.nvim')  -- lmfaoaoaoaoao
 
 
   -- Vim tex (math go brr)
-  use ('lervag/vimtex')
+  use('lervag/vimtex')
 
 
   -- Additional features for rust
-  use ("simrat39/rust-tools.nvim")
-end)
+  use("simrat39/rust-tools.nvim")
 
+
+  -- File tree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+  }
+end)

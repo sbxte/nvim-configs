@@ -40,6 +40,8 @@ vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 
 -- Custom remaps
@@ -107,3 +109,7 @@ vim.keymap.set('n', '<leader>sk', ':Telescope keymaps<CR>') -- I know there prob
 
 -- Undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+
+-- Nvim Tree
+vim.keymap.set("n", "<leader>\\", ":NvimTreeToggle<CR>")
