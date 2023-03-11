@@ -32,20 +32,19 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.o.updatetime = 250
+vim.o.updatetime = 1250
 vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 500
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 
 -- Custom remaps
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "[E]xplorer"})
 vim.keymap.set("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", { desc = "Neo[V]im [C]onfig [S]et.lua"})
 vim.keymap.set("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", { desc = "Neo[V]im [C]onfig [P]acker.lua"})
 
@@ -114,4 +113,4 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 
 -- Nvim Tree
-vim.keymap.set("n", "<leader>\\", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
