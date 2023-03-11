@@ -65,7 +65,7 @@ vim.keymap.set("n", "tT", ":tabp<CR>")
 
 vim.keymap.set("i", "<C-c>", "<Esc>") -- <C-[> is available too btw
 
-vim.keymap.set("n", "Q", "<Nop>")
+vim.keymap.set("n", "Q", ":q<CR>")
 
 vim.keymap.set("n", "W", ":update<CR>")
 
