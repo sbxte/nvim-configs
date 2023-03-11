@@ -75,12 +75,12 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 
 -- Todo comments
 vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev({keywords = { "TODO", "ERROR", "WARNING" }})
-end, { desc = "Previous todo/warning/error todo comment" })
+  require("todo-comments").jump_prev({keywords = { "TODO", "INFO", "ERROR", "WARNING" }})
+end, { desc = "Previous todo comment" })
 
 vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next({keywords = { "TODO", "ERROR", "WARNING" }})
-end, { desc = "Next todo/error/warning todo comment" })
+  require("todo-comments").jump_next({keywords = { "TODO", "INFO", "ERROR", "WARNING" }})
+end, { desc = "Next todo comment" })
 
 
 -- Trouble
