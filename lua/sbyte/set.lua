@@ -68,6 +68,8 @@ vim.keymap.set("i", "<C-c>", "<Esc>") -- <C-[> is available too btw
 
 vim.keymap.set("n", "Q", "<Nop>")
 
+vim.keymap.set("n", "W", ":update<CR>")
+
 -- Git Fugitive
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
 
