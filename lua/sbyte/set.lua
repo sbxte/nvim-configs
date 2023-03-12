@@ -43,6 +43,9 @@ vim.o.timeoutlen = 500
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+
 
 -- Custom remaps
 vim.keymap.set("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", { desc = "Neo[V]im [C]onfig [S]et.lua"})
