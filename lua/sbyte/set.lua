@@ -48,72 +48,75 @@ vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 
 
 -- Custom remaps
-vim.keymap.set("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", { desc = "Neo[V]im [C]onfig [S]et.lua"})
-vim.keymap.set("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", { desc = "Neo[V]im [C]onfig [P]acker.lua"})
+local map = function(mode, l, r, desc)
+  if desc then
+    desc = 'Custom: ' .. desc
+  end
+  vim.keymap.set(mode, l, r, { desc = desc, noremap = true, silent = true })
+end
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+map("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et.lua")
+map("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", "Neo[V]im [C]onfig [P]acker.lua")
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+map("v", "J", ":m '>+1<CR>gv=gv", "Move selected lines down")
+map("v", "K", ":m '<-2<CR>gv=gv", "Move selected lines up")
 
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
+map("n", "J", "mzJ`z", "Custom [J]")
+map("n", "<C-d>", "<C-d>zz", "Scroll down and center cursor")
+map("n", "<C-u>", "<C-u>zz", "Scroll up and center cursor")
 
-vim.keymap.set("n", "tn", ":tabnew<CR>")
-vim.keymap.set("n", "tc", ":tabclose<CR>")
-vim.keymap.set("n", "tt", ":tabn<CR>")
-vim.keymap.set("n", "tT", ":tabp<CR>")
+map("n", "<leader>y", "\"+y", "Yank to clipboard")
+map("v", "<leader>y", "\"+y", "Yank to clipboard")
 
-vim.keymap.set("i", "<C-c>", "<Esc>") -- <C-[> is available too btw
+map("n", "tn", ":tabnew<CR>", "New tab")
+map("n", "tc", ":tabclose<CR>", "Close tab")
+map("n", "tt", ":tabn<CR>", "Next tab")
+map("n", "tT", ":tabp<CR>", "Previous tab")
 
-vim.keymap.set("n", "Q", ":q<CR>")
-
-vim.keymap.set("n", "W", ":update<CR>")
+map("i", "<C-c>", "<Esc>", "<Esc>") -- <C-[> is available too btw
+map("n", "Q", ":q!<CR>", "Quit file without writing")
+map("n", "W", ":update<CR>", "Write file")
 
 -- Git Fugitive
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+map("n", "<leader>gs", vim.cmd.Git, "Open git vugitive");
 
 
 -- Todo comments
-vim.keymap.set("n", "[t", function()
+map("n", "[t", function()
   require("todo-comments").jump_prev({keywords = { "TODO", "INFO", "ERROR", "WARNING" }})
-end, { desc = "Previous todo comment" })
+end, "Previous todo comment")
 
-vim.keymap.set("n", "]t", function()
+map("n", "]t", function()
   require("todo-comments").jump_next({keywords = { "TODO", "INFO", "ERROR", "WARNING" }})
-end, { desc = "Next todo comment" })
+end, "Next todo comment")
 
 
 -- Trouble
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
-  {silent = true, noremap = true}
-)
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", "Open trouble quickfix")
 
 -- Telescope
 
 local tsbuiltin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>?', tsbuiltin.oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', tsbuiltin.buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
+map('n', '<leader>?', tsbuiltin.oldfiles, '[?] Find recently opened files')
+map('n', '<leader><space>', tsbuiltin.buffers, '[ ] Find existing buffers')
+map('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   tsbuiltin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
   })
-end, { desc = '[/] Fuzzily search in current buffer' })
-vim.keymap.set('n', '<leader>sf', tsbuiltin.find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', tsbuiltin.help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', tsbuiltin.grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', tsbuiltin.live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', tsbuiltin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+end, '[/] Fuzzily search in current buffer')
+map('n', '<leader>sf', tsbuiltin.find_files, '[S]earch [F]iles')
+map('n', '<leader>sh', tsbuiltin.help_tags, '[S]earch [H]elp')
+map('n', '<leader>sw', tsbuiltin.grep_string, '[S]earch current [W]ord')
+map('n', '<leader>sg', tsbuiltin.live_grep, '[S]earch by [G]rep')
+map('n', '<leader>sd', tsbuiltin.diagnostics, '[S]earch [D]iagnostics')
 
-vim.keymap.set('n', '<leader>sk', ':Telescope keymaps<CR>') -- I know there probably exists a better way of doing this but am too lazy to find out
+map('n', '<leader>sk', ':Telescope keymaps<CR>', '[S]earch [K]ey Remaps') -- I know there probably exists a better way of doing this but am too lazy to find out
 
 -- Undotree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+map("n", "<leader>u", vim.cmd.UndotreeToggle, 'Open [U]ndotree')
 
 
 -- Nvim Tree
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+map("n", "<leader>e", ":NvimTreeToggle<CR>", 'Open NvimTree [E]xplorer')
