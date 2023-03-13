@@ -45,7 +45,7 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.wo.foldenable = false
+vim.g.foldlevelstart = 99
 
 
 -- Custom remaps
