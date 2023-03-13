@@ -43,9 +43,13 @@ vim.o.timeoutlen = 500
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.g.foldlevelstart = 99
+-- vim.o.foldmethod = 'expr'
+-- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.g.foldlevelstart = 99
+vim.o.foldcolumn = '0'
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
 
 -- Custom remaps
@@ -140,3 +144,7 @@ map("n", "<leader>u", vim.cmd.UndotreeToggle, 'Open [U]ndotree', 'UndoTree')
 
 -- Nvim Tree
 map("n", "<leader>e", ":NvimTreeToggle<CR>", 'Open [E]xplorer', 'NvimTree')
+
+-- Ufo (folding)
+map("n", "zR", require("ufo").openAllFolds, "Open all folds", "Ufo")
+map("n", "zM", require("ufo").closeAllFolds, "Close all folds", "Ufo")
