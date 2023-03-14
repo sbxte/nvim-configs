@@ -6,7 +6,7 @@ local function on_attach(bufnr)
   end
 
   vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node,          opts('CD'))
-  vim.keymap.set('n', '<C-[>',     api.tree.change_root_to_parent,    opts('Up'))
+  vim.keymap.set('n', '-',     api.tree.change_root_to_parent,    opts('Up'))
 
   vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,     opts('Open: In Place'))
   vim.keymap.set('n', '<C-k>', api.node.show_info_popup,              opts('Info'))
