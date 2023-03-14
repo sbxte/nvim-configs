@@ -61,11 +61,11 @@ local map = function(mode, l, r, desc)
   vim.keymap.set(mode, l, r, { desc = desc, noremap = true, silent = true })
 end
 
-map("n", "<leader>vvcs", "<Cmd>e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et.lua")
-map("n", "<leader>vvcp", "<Cmd>e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", "Neo[V]im [C]onfig [P]acker.lua")
+map("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et.lua")
+map("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", "Neo[V]im [C]onfig [P]acker.lua")
 
-map("v", "J", "<Cmd>m '>+1<CR>gv=gv", "Move selected lines down")
-map("v", "K", "<Cmd>m '<-2<CR>gv=gv", "Move selected lines up")
+map("v", "J", ":m '>+1<CR>gv=gv", "Move selected lines down")
+map("v", "K", ":m '<-2<CR>gv=gv", "Move selected lines up")
 
 map("n", "J", "mzJ`z", "Custom [J]")
 map("n", "<C-d>", "<C-d>zz", "Scroll down and center cursor")
@@ -74,14 +74,14 @@ map("n", "<C-u>", "<C-u>zz", "Scroll up and center cursor")
 map({"n", "v"}, "<leader>yy", "\"+y", "Yank to clipboard")
 map("x", "<leader>yp", "\"_dP", "Dump selection to blackhole and paste")
 
-map("n", "tn", "<Cmd>tabnew<CR>", "New tab")
-map("n", "tc", "<Cmd>tabclose<CR>", "Close tab")
-map("n", "tt", "<Cmd>tabn<CR>", "Next tab")
-map("n", "tT", "<Cmd>tabp<CR>", "Previous tab")
+map("n", "tn", ":tabnew<CR>", "New tab")
+map("n", "tc", ":tabclose<CR>", "Close tab")
+map("n", "tt", ":tabn<CR>", "Next tab")
+map("n", "tT", ":tabp<CR>", "Previous tab")
 
 map("i", "<C-c>", "<Esc>", "<Esc>") -- <C-[> is available too btw
-map("n", "Q", "<Cmd>q!<CR>", "Quit file without writing")
-map("n", "W", "<Cmd>update<CR>", "Write file")
+map("n", "Q", ":q!<CR>", "Quit file without writing")
+map("n", "W", ":update<CR>", "Write file")
 
 -- Git Fugitive
 cat("GitFugitive")
@@ -101,9 +101,9 @@ end, "Next todo comment")
 
 -- Trouble
 cat("TroubleToggle")
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", "Open trouble")
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", "Open trouble quickfix")
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Open trouble workspace diagnostics")
+map("n", "<leader>xx", ":TroubleToggle<cr>", "Open trouble")
+map("n", "<leader>xq", ":TroubleToggle quickfix<cr>", "Open trouble quickfix")
+map("n", "<leader>xw", ":TroubleToggle workspace_diagnostics<cr>", "Open trouble workspace diagnostics")
 
 -- Telescope
 cat('Telescope')
@@ -135,7 +135,7 @@ map('n', '<leader>sw', tsbuiltin.grep_string, '[S]earch current [W]ord')
 map('n', '<leader>sg', tsbuiltin.live_grep, '[S]earch by [G]rep')
 map('n', '<leader>sd', tsbuiltin.diagnostics, '[S]earch [D]iagnostics')
 
-map('n', '<leader>sk', '<Cmd>Telescope keymaps<CR>', '[S]earch [K]ey Remaps') -- I know there probably exists a better way of doing this but am too lazy to find out
+map('n', '<leader>sk', ':Telescope keymaps<CR>', '[S]earch [K]ey Remaps') -- I know there probably exists a better way of doing this but am too lazy to find out
 
 -- Undotree
 cat('UndoTree')
@@ -144,7 +144,7 @@ map("n", "<leader>u", vim.cmd.UndotreeToggle, 'Open [U]ndotree')
 
 -- Nvim Tree
 cat('NvimTree')
-map("n", "<leader>e", "<Cmd>NvimTreeToggle<CR>", 'Open [E]xplorer')
+map("n", "<leader>e", ":NvimTreeToggle<CR>", 'Open [E]xplorer')
 
 -- Ufo (folding)
 cat('UFO')
@@ -157,15 +157,15 @@ map('n', '<A-,>', vim.cmd.BufferPrevious, 'Previous Buffer')
 map('n', '<A-.>', vim.cmd.BufferNext, 'Next Buffer')
 map('n', '<A-<>', vim.cmd.BufferMovePrevious, 'Move buffer to previous buffer')
 map('n', '<A->>', vim.cmd.BufferMoveNext, 'Move buffer to next buffer')
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', 'Go to buffer 1')
-map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', 'Go to buffer 2')
-map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', 'Go to buffer 3')
-map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', 'Go to buffer 4')
-map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', 'Go to buffer 5')
-map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', 'Go to buffer 6')
-map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', 'Go to buffer 7')
-map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', 'Go to buffer 8')
-map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', 'Go to buffer 9')
+map('n', '<A-1>', ':BufferGoto 1<CR>', 'Go to buffer 1')
+map('n', '<A-2>', ':BufferGoto 2<CR>', 'Go to buffer 2')
+map('n', '<A-3>', ':BufferGoto 3<CR>', 'Go to buffer 3')
+map('n', '<A-4>', ':BufferGoto 4<CR>', 'Go to buffer 4')
+map('n', '<A-5>', ':BufferGoto 5<CR>', 'Go to buffer 5')
+map('n', '<A-6>', ':BufferGoto 6<CR>', 'Go to buffer 6')
+map('n', '<A-7>', ':BufferGoto 7<CR>', 'Go to buffer 7')
+map('n', '<A-8>', ':BufferGoto 8<CR>', 'Go to buffer 8')
+map('n', '<A-9>', ':BufferGoto 9<CR>', 'Go to buffer 9')
 map('n', '<A-0>', vim.cmd.BufferLast, 'Go to last buffer')
 map('n', '<A-p>', vim.cmd.BufferPin, 'Toggle buffer pin')
 map('n', '<A-c>', vim.cmd.BufferClose, 'Close buffer')
