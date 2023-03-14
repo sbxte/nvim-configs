@@ -53,14 +53,11 @@ vim.o.foldenable = true
 
 
 -- Custom remaps
-local map = function(mode, l, r, desc, cat)
+local category = "Custom"
+local cat = function (name) category = name end
+local map = function(mode, l, r, desc)
   if desc then
-    if cat then
-      cat = cat .. ': '
-    else
-      cat = 'Custom: '
-    end
-    desc = cat .. desc
+    desc = category .. ": " .. desc
   end
 
   vim.keymap.set(mode, l, r, { desc = desc, noremap = true, silent = true })
@@ -89,29 +86,33 @@ map("n", "Q", ":q!<CR>", "Quit file without writing")
 map("n", "W", ":update<CR>", "Write file")
 
 -- Git Fugitive
-map("n", "<leader>gs", vim.cmd.Git, "Open Git", "GitFugitive");
+cat("GitFugitive")
+map("n", "<leader>gs", vim.cmd.Git, "Open Git");
 
 
 -- Todo comments
+cat("TodoComment")
 map("n", "[t", function()
   require("todo-comments").jump_prev({keywords = { "TODO", "INFO", "ERROR", "WARNING" }})
-end, "Previous todo comment", "TodoComment")
+end, "Previous todo comment")
 
 map("n", "]t", function()
   require("todo-comments").jump_next({keywords = { "TODO", "INFO", "ERROR", "WARNING" }})
-end, "Next todo comment", "TodoComment")
+end, "Next todo comment")
 
 
 -- Trouble
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", "Open trouble", "TroubleToggle")
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", "Open trouble quickfix", "TroubleToggle")
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Open trouble workspace diagnostics", "TroubleToggle")
+cat("TroubleToggle")
+map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", "Open trouble")
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", "Open trouble quickfix")
+map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Open trouble workspace diagnostics")
 
 -- Telescope
+cat('Telescope')
 
 local tsbuiltin = require('telescope.builtin')
-map('n', '<leader>?', tsbuiltin.oldfiles, '[?] Find recently opened files', 'Telescope')
-map('n', '<leader><space>', tsbuiltin.buffers, '[ ] Find existing buffers', 'Telescope')
+map('n', '<leader>?', tsbuiltin.oldfiles, '[?] Find recently opened files')
+map('n', '<leader><space>', tsbuiltin.buffers, '[ ] Find existing buffers')
 map('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   tsbuiltin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -129,22 +130,25 @@ map('n', '<leader>/', function()
       end,
     },
   })
-end, '[/] Fuzzily search in current buffer', 'Telescope')
-map('n', '<leader>sf', tsbuiltin.find_files, '[S]earch [F]iles', 'Telescope')
-map('n', '<leader>sh', tsbuiltin.help_tags, '[S]earch [H]elp', 'Telescope')
-map('n', '<leader>sw', tsbuiltin.grep_string, '[S]earch current [W]ord', 'Telescope')
-map('n', '<leader>sg', tsbuiltin.live_grep, '[S]earch by [G]rep', 'Telescope')
-map('n', '<leader>sd', tsbuiltin.diagnostics, '[S]earch [D]iagnostics', 'Telescope')
+end, '[/] Fuzzily search in current buffer')
+map('n', '<leader>sf', tsbuiltin.find_files, '[S]earch [F]iles')
+map('n', '<leader>sh', tsbuiltin.help_tags, '[S]earch [H]elp')
+map('n', '<leader>sw', tsbuiltin.grep_string, '[S]earch current [W]ord')
+map('n', '<leader>sg', tsbuiltin.live_grep, '[S]earch by [G]rep')
+map('n', '<leader>sd', tsbuiltin.diagnostics, '[S]earch [D]iagnostics')
 
-map('n', '<leader>sk', ':Telescope keymaps<CR>', '[S]earch [K]ey Remaps', 'Telescope') -- I know there probably exists a better way of doing this but am too lazy to find out
+map('n', '<leader>sk', ':Telescope keymaps<CR>', '[S]earch [K]ey Remaps') -- I know there probably exists a better way of doing this but am too lazy to find out
 
 -- Undotree
-map("n", "<leader>u", vim.cmd.UndotreeToggle, 'Open [U]ndotree', 'UndoTree')
+cat('UndoTree')
+map("n", "<leader>u", vim.cmd.UndotreeToggle, 'Open [U]ndotree')
 
 
 -- Nvim Tree
-map("n", "<leader>e", ":NvimTreeToggle<CR>", 'Open [E]xplorer', 'NvimTree')
+cat('NvimTree')
+map("n", "<leader>e", ":NvimTreeToggle<CR>", 'Open [E]xplorer')
 
 -- Ufo (folding)
-map("n", "zR", require("ufo").openAllFolds, "Open all folds", "Ufo")
-map("n", "zM", require("ufo").closeAllFolds, "Close all folds", "Ufo")
+cat('UFO')
+map("n", "zR", require("ufo").openAllFolds, "Open all folds")
+map("n", "zM", require("ufo").closeAllFolds, "Close all folds")
