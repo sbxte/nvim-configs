@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
       vim.cmd('colorscheme onedark')
     end
   }
+  use 'nvim-tree/nvim-web-devicons' -- Custom icons
 
 
   -- Tree sitter
@@ -99,7 +100,7 @@ return require('packer').startup(function(use)
   -- Lua line status bar
   use {
     'nvim-lualine/lualine.nvim',
-    requires = ('kyazdani42/nvim-web-devicons')
+    requires = ('nvim-tree/nvim-web-devicons')
   }
 
 
@@ -138,4 +139,7 @@ return require('packer').startup(function(use)
 
   -- Folding
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+
+  -- Better tabs
+  use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 end)
