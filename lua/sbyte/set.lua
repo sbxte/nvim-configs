@@ -12,6 +12,7 @@ vim.g.guicursor = {
   a = "blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
   sm = "block-blinkwait175-blinkoff150-blinkon175"
 }
+
 vim.opt.nu = true
 vim.opt.rnu = true
 
@@ -43,9 +44,6 @@ vim.o.timeoutlen = 500
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- vim.o.foldmethod = 'expr'
--- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
--- vim.g.foldlevelstart = 99
 vim.o.foldcolumn = '0'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
@@ -73,8 +71,8 @@ map("n", "J", "mzJ`z", "Custom [J]")
 map("n", "<C-d>", "<C-d>zz", "Scroll down and center cursor")
 map("n", "<C-u>", "<C-u>zz", "Scroll up and center cursor")
 
-map("n", "<leader>y", "\"+y", "Yank to clipboard")
-map("v", "<leader>y", "\"+y", "Yank to clipboard")
+map({"n", "v"}, "<leader>yy", "\"+y", "Yank to clipboard")
+map("x", "<leader>yp", "\"_dP", "Dump selection to blackhole and paste")
 
 map("n", "tn", "<Cmd>tabnew<CR>", "New tab")
 map("n", "tc", "<Cmd>tabclose<CR>", "Close tab")
