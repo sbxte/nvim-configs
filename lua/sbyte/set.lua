@@ -71,8 +71,10 @@ map("n", "J", "mzJ`z", "Custom [J]")
 map("n", "<C-d>", "<C-d>zz", "Scroll down and center cursor")
 map("n", "<C-u>", "<C-u>zz", "Scroll up and center cursor")
 
-map({"n", "v"}, "<leader>yy", "\"+y", "Yank to clipboard")
-map("x", "<leader>yp", "\"_dP", "Dump selection to blackhole and paste")
+map("v", "<leader>yy", "\"+y", "Yank to clipboard")
+map("v", "<leader>yp", "\"_d\"+p", "Paste from clipboard")
+map("n", "<leader>yp", "\"+p", "Paste from clipboard")
+map("v", "<leader>yd", "\"_d", "Dump selection to blackhole")
 
 map("n", "tn", ":tabnew<CR>", "New tab")
 map("n", "tc", ":tabclose<CR>", "Close tab")
