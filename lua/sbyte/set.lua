@@ -73,8 +73,9 @@ map("n", "<C-u>", "<C-u>zz", "Scroll up and center cursor")
 
 map("v", "<leader>yy", "\"+y", "Yank to clipboard")
 map("v", "<leader>yp", "\"_d\"+p", "Paste from clipboard")
+map("v", "<leader>yP", "\"_d\"+P", "Paste from clipboard")
 map("n", "<leader>yp", "\"+p", "Paste from clipboard")
-map("v", "<leader>yd", "\"_d", "Dump selection to blackhole")
+map("n", "<leader>yP", "\"+P", "Paste from clipboard")
 
 map("n", "tn", ":tabnew<CR>", "New tab")
 map("n", "tc", ":tabclose<CR>", "Close tab")
