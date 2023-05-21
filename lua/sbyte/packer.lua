@@ -141,5 +141,6 @@ return require('packer').startup(function(use)
   use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
   -- Better tabs
-  use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+  -- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 end)

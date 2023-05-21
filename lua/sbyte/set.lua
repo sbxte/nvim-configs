@@ -77,14 +77,18 @@ map("v", "<leader>yP", "\"_d\"+P", "Paste from clipboard")
 map("n", "<leader>yp", "\"+p", "Paste from clipboard")
 map("n", "<leader>yP", "\"+P", "Paste from clipboard")
 
-map("n", "tn", ":tabnew<CR>", "New tab")
-map("n", "tc", ":tabclose<CR>", "Close tab")
-map("n", "tt", ":tabn<CR>", "Next tab")
-map("n", "tT", ":tabp<CR>", "Previous tab")
+map("n", "tc", ":bd<CR>", "Close buffer")
+map("n", "tt", ":bn<CR>", "Next buffer")
+map("n", "tT", ":bp<CR>", "Previous buffer")
+map("n", "tl", ":ls<CR>", "List buffers")
+map("n", "Tn", ":tabnew<CR>", "New tab")
+map("n", "Tc", ":tabclose<CR>", "Close tab")
+map("n", "Tt", ":tabn<CR>", "Next tab")
+map("n", "TT", ":tabp<CR>", "Previous tab")
 
-map("i", "<C-c>", "<Esc>", "<Esc>") -- <C-[> is available too btw
+-- map("i", "<C-c>", "<Esc>", "<Esc>") -- <C-[> is available too btw
 map("n", "Q", ":q!<CR>", "Quit file without writing")
-map("n", "W", ":update<CR>", "Write file")
+map("n", "W", ":w<CR>", "Write file")
 
 -- Git Fugitive
 cat("GitFugitive")
