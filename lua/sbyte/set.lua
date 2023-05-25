@@ -88,7 +88,7 @@ map("n", "TT", ":tabp<CR>", "Previous tab")
 
 -- map("i", "<C-c>", "<Esc>", "<Esc>") -- <C-[> is available too btw
 map("n", "Q", ":q!<CR>", "Quit file without writing")
-map("n", "W", ":w<CR>", "Write file")
+map("n", "<C-s>", ":w<CR>", "Write file")
 
 -- Git Fugitive
 cat("GitFugitive")
