@@ -86,6 +86,14 @@ map("n", "Tc", ":tabclose<CR>", "Close tab")
 map("n", "Tt", ":tabn<CR>", "Next tab")
 map("n", "TT", ":tabp<CR>", "Previous tab")
 
+-- map("n", "<C-j>", "<C-W>j");
+-- map("n", "<C-k>", "<C-W>k");
+-- map("n", "<C-h>", "<C-W>h");
+-- map("n", "<C-l>", "<C-W>l");
+
+map({"n","v"}, "<M-j>", "5j");
+map({"n","v"}, "<M-k>", "5k");
+
 -- map("i", "<C-c>", "<Esc>", "<Esc>") -- <C-[> is available too btw
 map("n", "Q", ":q!<CR>", "Quit file without writing")
 map("n", "<C-s>", ":w<CR>", "Write file")
