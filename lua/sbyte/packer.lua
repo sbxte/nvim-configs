@@ -143,4 +143,7 @@ return require('packer').startup(function(use)
   -- Better tabs
   -- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
   use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
+  -- Marks
+  use {'chentoast/marks.nvim'}
 end)
