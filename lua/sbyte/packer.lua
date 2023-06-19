@@ -140,4 +140,7 @@ return require('packer').startup(function(use)
 
   -- Marks
   use {'chentoast/marks.nvim'}
+
+  -- Leaping and jumping
+  use {'ggandor/leap.nvim'}
 end)
