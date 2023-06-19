@@ -62,12 +62,6 @@ return require('packer').startup(function(use)
   -- LSP
   use('williamboman/mason.nvim')
   use('williamboman/mason-lspconfig.nvim')
-  use {
-    'j-hui/fidget.nvim',
-    config = function()
-      require("fidget").setup()
-    end
-  }
   use('folke/neodev.nvim')
   use('neovim/nvim-lspconfig')
 
