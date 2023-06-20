@@ -67,7 +67,7 @@ map("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", "Ne
 map("v", "J", ":m '>+1<CR>gv=gv", "Move selected lines down")
 map("v", "K", ":m '<-2<CR>gv=gv", "Move selected lines up")
 
-map("n", "J", "mzJ`z", "Custom [J]")
+map("n", "J", "mzJ`zdmz", "Custom [J]")
 map("n", "<C-d>", "<C-d>zz", "Scroll down and center cursor")
 map("n", "<C-u>", "<C-u>zz", "Scroll up and center cursor")
 
