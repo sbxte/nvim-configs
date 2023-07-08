@@ -16,8 +16,6 @@ return require('packer').startup(function(use)
 
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
     build = 'make',
     cond = function()
       return vim.fn.executable 'make' == 1
@@ -56,6 +54,13 @@ return require('packer').startup(function(use)
   use('tpope/vim-rhubarb')
   use { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+  }
+
+  -- Start screen
+  use {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    requires = 'nvim-tree/nvim-web-devicons'
   }
 
 
