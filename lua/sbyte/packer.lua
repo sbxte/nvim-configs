@@ -59,7 +59,6 @@ return require('packer').startup(function(use)
   -- Start screen
   use {
     'glepnir/dashboard-nvim',
-    event = 'VimEnter',
     requires = 'nvim-tree/nvim-web-devicons'
   }
 
