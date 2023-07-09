@@ -4,11 +4,11 @@ require("sbyte.set")
 -- Auto cmds
 
 local autocmd = vim.api.nvim_create_autocmd
-local sbyte = vim.api.nvim_create_augroup('dan', {})
+local editing = vim.api.nvim_create_augroup('editing', {})
 
 -- Automatically remove all trailing whitespaces
 autocmd({"BufWritePre"}, {
-    group = sbyte,
+    group = editing,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
