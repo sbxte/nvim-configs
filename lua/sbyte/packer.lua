@@ -147,4 +147,6 @@ return require('packer').startup(function(use)
 
   -- Leaping and jumping
   use {'ggandor/leap.nvim'}
+
+  -- Markdown (possibly?)
 end)

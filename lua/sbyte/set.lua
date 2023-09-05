@@ -80,13 +80,9 @@ map("n", "<leader>yp", "\"+p", "Paste from clipboard")
 map("n", "<leader>yP", "\"+P", "Paste from clipboard")
 
 map("n", "td", ":bd<CR>", "Delete buffer")
-map("n", "tt", ":bn<CR>", "Next buffer")
-map("n", "tT", ":bp<CR>", "Previous buffer")
+map("n", "t]", ":bn<CR>", "Next buffer")
+map("n", "t[", ":bp<CR>", "Previous buffer")
 map("n", "tl", ":ls<CR>", "List buffers")
-map("n", "Tn", ":tabnew<CR>", "New tab")
-map("n", "Td", ":tabclose<CR>", "Delete tab")
-map("n", "Tt", ":tabn<CR>", "Next tab")
-map("n", "TT", ":tabp<CR>", "Previous tab")
 
 -- map("n", "<C-j>", "<C-W>j");
 -- map("n", "<C-k>", "<C-W>k");
