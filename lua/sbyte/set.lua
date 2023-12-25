@@ -154,6 +154,8 @@ map('n', '<leader>sk', ':Telescope keymaps<CR>', '[S]earch [K]ey Remaps') -- I k
 
 map('n', '<leader>u', ':Telescope undo<CR>', 'Telescope [U]ndo')
 
+map('n', '<leader>e', ':Telescope file_browser<CR>', 'Telescope File Browser ([E]xplorer)')
+
 
 -- Undotree
 -- cat('UndoTree')
@@ -162,7 +164,7 @@ map('n', '<leader>u', ':Telescope undo<CR>', 'Telescope [U]ndo')
 
 -- Nvim Tree
 cat('NvimTree')
-map("n", "<leader>e", ":NvimTreeToggle<CR>", 'Open [E]xplorer')
+-- map("n", "<leader>e", ":NvimTreeToggle<CR>", 'Open [E]xplorer')
 
 -- Ufo (folding)
 cat('UFO')
