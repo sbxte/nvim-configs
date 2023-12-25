@@ -17,7 +17,7 @@ ts.setup {
 	},
 }
 
-function load(name)
+local load = function(name)
 	ts.load_extension(name)
 end
 
