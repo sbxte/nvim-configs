@@ -65,6 +65,7 @@ end
 
 map("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et.lua")
 map("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", "Neo[V]im [C]onfig [P]acker.lua")
+map("n", "<leader>vvcl", ":e ~/appdata/local/nvim/after/plugin/lsp.lua<CR>", "Neo[V]im [C]onfig [L]sp.lua")
 
 map("v", "J", ":m '>+1<CR>gv=gv", "Move selected lines down")
 map("v", "K", ":m '<-2<CR>gv=gv", "Move selected lines up")
@@ -94,6 +95,7 @@ map({"n","v"}, "<M-k>", "5k");
 
 -- map("i", "<C-c>", "<Esc>", "<Esc>") -- <C-[> is available too btw
 map("n", "Q", ":q!<CR>", "Quit file without writing")
+map("n", "q", "<Nop>") -- This is infuriating
 map("n", "<C-s>", ":w<CR>", "Write file")
 
 -- Git Fugitive
