@@ -152,9 +152,12 @@ map('n', '<leader>sd', tsbuiltin.diagnostics, '[S]earch [D]iagnostics')
 
 map('n', '<leader>sk', ':Telescope keymaps<CR>', '[S]earch [K]ey Remaps') -- I know there probably exists a better way of doing this but am too lazy to find out
 
+map('n', '<leader>u', ':Telescope undo<CR>', 'Telescope [U]ndo')
+
+
 -- Undotree
-cat('UndoTree')
-map("n", "<leader>u", vim.cmd.UndotreeToggle, 'Open [U]ndotree')
+-- cat('UndoTree')
+-- map("n", "<leader>u", vim.cmd.UndotreeToggle, 'Open [U]ndotree')
 
 
 -- Nvim Tree

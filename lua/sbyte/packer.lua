@@ -11,7 +11,10 @@ return require('packer').startup(function(use)
   use('nvim-lua/plenary.nvim')
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    requires = {
+      'nvim-lua/plenary.nvim',
+      "debugloop/telescope-undo.nvim",
+    }
   }
 
   use {
@@ -49,11 +52,15 @@ return require('packer').startup(function(use)
 
 
   -- Git and history stuff
-  use('mbbill/undotree')
+  -- use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('tpope/vim-rhubarb')
   use { -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+  }
+  use {
+    "debugloop/telescope-undo.nvim",
+    requires = 'nvim-telescope/telescope.nvim'
   }
 
   -- Start screen
