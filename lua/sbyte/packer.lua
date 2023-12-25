@@ -14,7 +14,8 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-lua/plenary.nvim',
       "debugloop/telescope-undo.nvim",
-      'nvim-telescope/telescope-file-browser.nvim'
+      'nvim-telescope/telescope-file-browser.nvim',
+      'nvim-telescope/telescope-live-grep-args.nvim',
     }
   }
 

@@ -23,3 +23,4 @@ end
 
 load('undo')
 load('file_browser')
+load('live_grep_args')
