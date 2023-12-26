@@ -52,6 +52,7 @@ vim.o.foldenable = true
 
 vim.o.autoread = true
 
+vim.o.fixeol = false
 
 -- Custom remaps
 local category = "Custom"
