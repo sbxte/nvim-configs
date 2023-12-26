@@ -1,7 +1,8 @@
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_,bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
 
   local nmap = function(keys, func, desc)
     if desc then
@@ -36,62 +37,62 @@ end
 
 -- Additional rust features
 
-require("rust-tools").setup({
-  tools = {
-    runnables = {
-      use_telescope = true,
-    },
-    inlay_hints = {
-      auto = true,
-      show_parameter_hints = false,
-      parameter_hints_prefix = "",
-      other_hints_prefix = "",
-    },
-  },
-
-  -- all the opts to send to nvim-lspconfig
-  -- these override the defaults set by rust-tools.nvim
-  -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-  server = {
-    -- on_attach is a callback called when the language server attachs to the buffer
-    on_attach = on_attach,
-    settings = {
-      -- to enable rust-analyzer settings visit:
-      -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-      ["rust-analyzer"] = {
-        -- enable clippy on save
-        checkOnSave = {
-          command = "clippy",
-        },
-        imports = {
-          granularity = {
-            group = "module",
-          },
-          prefix = "self",
-        },
-        cargo = {
-          buildScripts = {
-            enable = true,
-          },
-        },
-        procMacro = {
-          enable = true,
-        },
-      },
-    },
-  },
-
-  -- Installed sources
-  sources = {
-    { name = 'path' },                              -- file paths
-    { name = 'nvim_lsp', keyword_length = 3 },      -- from language server
-    { name = 'nvim_lsp_signature_help'},            -- display function signatures with current parameter emphasized
-    { name = 'nvim_lua', keyword_length = 2},       -- complete neovim's Lua runtime API such vim.lsp.*
-    { name = 'buffer', keyword_length = 2 },        -- source current buffer
-    { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip
-    { name = 'calc'},                               -- source for math calculation
-  },
-})
+-- require("rust-tools").setup({
+--   tools = {
+--     runnables = {
+--       use_telescope = true,
+--     },
+--     inlay_hints = {
+--       auto = true,
+--       show_parameter_hints = false,
+--       parameter_hints_prefix = "",
+--       other_hints_prefix = "",
+--     },
+--   },
+--
+--   -- all the opts to send to nvim-lspconfig
+--   -- these override the defaults set by rust-tools.nvim
+--   -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+--   server = {
+--     -- on_attach is a callback called when the language server attachs to the buffer
+--     on_attach = on_attach,
+--     settings = {
+--       -- to enable rust-analyzer settings visit:
+--       -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+--       ["rust-analyzer"] = {
+--         -- enable clippy on save
+--         checkOnSave = {
+--           command = "clippy",
+--         },
+--         imports = {
+--           granularity = {
+--             group = "module",
+--           },
+--           prefix = "self",
+--         },
+--         cargo = {
+--           buildScripts = {
+--             enable = true,
+--           },
+--         },
+--         procMacro = {
+--           enable = true,
+--         },
+--       },
+--     },
+--   },
+--
+--   -- Installed sources
+--   sources = {
+--     { name = 'path' },                              -- file paths
+--     { name = 'nvim_lsp', keyword_length = 3 },      -- from language server
+--     { name = 'nvim_lsp_signature_help'},            -- display function signatures with current parameter emphasized
+--     { name = 'nvim_lua', keyword_length = 2},       -- complete neovim's Lua runtime API such vim.lsp.*
+--     { name = 'buffer', keyword_length = 2 },        -- source current buffer
+--     { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip
+--     { name = 'calc'},                               -- source for math calculation
+--   },
+-- })
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -102,7 +103,27 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   -- pyright = {},
-  rust_analyzer = {},
+  rust_analyzer = {
+    ['rust-analyzer'] = {
+      cargo = {
+        buildScripts = true,
+      },
+      checkOnSave = true,
+      check = {
+        command = "clippy",
+      },
+      imports = {
+        granularity = {
+          group = "module",
+        },
+      },
+      inlayHints = {
+        typeHints = {
+          enable = false,
+        },
+      },
+    }
+  },
   -- tsserver = {},
 
   lua_ls = {
@@ -148,7 +169,6 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
@@ -164,7 +184,14 @@ cmp.setup {
   mapping = cmp.mapping.preset.insert {
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<C-l>'] = cmp.mapping.complete {},
+    ['<Esc>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.close()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -188,10 +215,12 @@ cmp.setup {
       end
     end, { 'i', 's' }),
   },
-  sources = {
+  sources = cmp.config.sources ({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-  },
+  }, {
+    { name = 'buffer' },
+  })
 }
 
 
