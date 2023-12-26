@@ -4,30 +4,6 @@ local on_attach = function(_,bufnr)
   -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
 
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
-    vim.keymap.set('n', keys, func, { buffer = bufnr, remap = false, desc = desc })
-  end
-
-  local tsbuiltin = require('telescope.builtin')
-
-  nmap("<C-k>", vim.lsp.buf.signature_help, 'Signature Documentation (Help)')
-  nmap("]d", vim.diagnostic.goto_next, "Goto previous diag message")
-  nmap("[d", vim.diagnostic.goto_prev, "Goto next diag message")
-  nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-  nmap('gd', tsbuiltin.lsp_definitions, "[G]oto [D]efinition")
-  nmap('gi', tsbuiltin.lsp_implementations, "[G]oto [I]implementation")
-  nmap('gr', tsbuiltin.lsp_references, "[G]oto [R]eferences")
-  nmap('gD', vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-  nmap('gt', tsbuiltin.lsp_type_definitions, "[G]oto [T]ype Definition")
-  nmap(";ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-  nmap(';rn', vim.lsp.buf.rename, "[R]e[n]ame")
-  nmap(';f', vim.lsp.buf.format, "[F]ormat")
-  nmap(';e', vim.diagnostic.open_float, "Open floating diagnostic message")
-  nmap(';q', tsbuiltin.diagnostics, "Open diagnostics list")
-
     -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
@@ -185,7 +161,7 @@ cmp.setup {
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-l>'] = cmp.mapping.complete {},
-    ['<Esc>'] = cmp.mapping(function(fallback)
+    ['<C-k>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.close()
       else
