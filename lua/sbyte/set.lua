@@ -105,7 +105,7 @@ map('n', 'td', function ()
   local bufnr = vim.fn.bufnr()
   vim.cmd('bn')
   vim.cmd('bd' .. bufnr)
-end)
+end, "Delete buffer")
 
 map('n', 'tt]', ':tabn<cr>', 'Next tab')
 map('n', 'tt[', ':tabp<cr>', 'Previous tab')
