@@ -115,7 +115,11 @@ map('n', 'ttd', ':tabc<cr>', 'Close tab')
 map({ "n", "v" }, "<M-j>", "5j");
 map({ "n", "v" }, "<M-k>", "5k");
 
--- map("i", "<C-c>", "<Esc>", "<Esc>") -- <C-[> is available too btw
+map('n', '<C-w>f', function ()
+  vim.cmd('tab split')
+  vim.cmd('tabclose #')
+end, '[F]ullscreen window')
+
 map("n", "Q", ":q!<CR>", "Quit file without writing")
 map("n", "q", "<Nop>") -- This is infuriating
 map("n", "<C-s>", ":w<CR>", "Write file")
