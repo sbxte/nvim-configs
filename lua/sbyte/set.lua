@@ -107,10 +107,10 @@ map('n', 'td', function ()
   vim.cmd('bd' .. bufnr)
 end)
 
-map('n', 'tt]', ':tabn', 'Next tab')
-map('n', 'tt[', ':tabp', 'Previous tab')
-map('n', 'ttn', ':tabnew', 'New tab')
-map('n', 'ttd', ':tabc', 'Close tab')
+map('n', 'tt]', ':tabn<cr>', 'Next tab')
+map('n', 'tt[', ':tabp<cr>', 'Previous tab')
+map('n', 'ttn', ':tabnew<cr>', 'New tab')
+map('n', 'ttd', ':tabc<cr>', 'Close tab')
 
 map({ "n", "v" }, "<M-j>", "5j");
 map({ "n", "v" }, "<M-k>", "5k");
