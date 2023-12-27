@@ -126,15 +126,15 @@ return require('packer').startup(function(use)
 
 
   -- Discord presence
-  use('andweeb/presence.nvim')  -- lmfaoaoaoaoao
+  -- use('andweeb/presence.nvim')  -- lmfaoaoaoaoao
 
 
   -- Vim tex (math go brr)
-  use('lervag/vimtex')
+  -- use('lervag/vimtex')
 
 
   -- Additional features for rust
-  use("simrat39/rust-tools.nvim")
+  -- use("simrat39/rust-tools.nvim")
 
 
   -- File tree
