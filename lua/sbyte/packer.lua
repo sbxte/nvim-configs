@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
       "debugloop/telescope-undo.nvim",
       'nvim-telescope/telescope-file-browser.nvim',
       'nvim-telescope/telescope-live-grep-args.nvim',
+      'LukasPietzschmann/telescope-tabs',
     }
   }
 

@@ -11,9 +11,6 @@ ts.setup {
 			time_format = "",
 			saved_only = false,
 		},
-		file_browser = {
-
-		}
 	},
 }
 
@@ -24,3 +21,4 @@ end
 load('undo')
 load('file_browser')
 load('live_grep_args')
+load('telescope-tabs')
