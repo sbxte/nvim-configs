@@ -54,6 +54,8 @@ vim.o.autoread = true
 
 vim.o.fixeol = false
 
+vim.o.shell = 'pwsh'
+
 -- Custom remaps
 local tsbuiltin = require('telescope.builtin')
 local tsx = require('telescope').extensions
