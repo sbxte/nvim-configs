@@ -1,61 +1,3 @@
-vim.g.mapleader = " "
-vim.g.guicursor = {
-  n = "block",
-  v = "block",
-  c = "block",
-  i = "ver25",
-  ci = "ver25",
-  ve = "ver25",
-  r = "hor20",
-  cr = "hor20",
-  o = "hor50",
-  a = "blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-  sm = "block-blinkwait175-blinkoff150-blinkon175"
-}
-
-vim.opt.nu = true
-vim.opt.rnu = true
-
-vim.opt.autoindent = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-
-vim.opt.smartindent = true
-
-vim.opt.wrap = false
-
-vim.opt.swapfile = false
-vim.opt.backup = false
-
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-
-vim.opt.termguicolors = true
-
-vim.opt.scrolloff = 5
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
-
-vim.o.updatetime = 1250
-vim.o.timeout = true
-vim.o.timeoutlen = 500
-
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
-vim.o.foldcolumn = '0'
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
-vim.o.autoread = true
-
-vim.o.fixeol = false
-
-vim.o.shell = 'pwsh'
-
 -- Custom remaps
 local tsbuiltin = require('telescope.builtin')
 local tsx = require('telescope').extensions
@@ -75,11 +17,12 @@ end
 map('n', "<leader>vvcc", function()
   require('telescope').extensions.file_browser.file_browser { path = '~/appdata/local/nvim/' }
 end, 'Neo[V]im [C]onfig')
-map("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et.lua")
+map("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et Remaps.lua")
+map("n", "<leader>vvco", ":e ~/appdata/local/nvim/lua/sbyte/options.lua<CR>", "Neo[V]im [C]onfig [O]ption.lua")
 map("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", "Neo[V]im [C]onfig [P]acker.lua")
 map('n', '<leader>vvci', ':e ~/appdata/local/nvim/lua/sbyte/init.lua<CR>', 'Neo[V]im [C]onfig [I]nit.lua')
 map('n', '<leader>vvca', function()
-  require('telescope').extensions.file_browser.file_browser { path = '~/appdata/local/nvim/after/plugin/' }
+  require('telescope').extensions.file_browser.file_browser { path = '~/appdata/local/nvim/lua/plugins/' }
 end, 'Neo[V]im [C]onfig [A]fter Lua')
 map("n", "<leader>vvcl", ":e ~/appdata/local/nvim/after/plugin/lsp.lua<CR>", "Neo[V]im [C]onfig [L]sp.lua")
 map("n", "<leader>vvct", ":e ~/appdata/local/nvim/after/plugin/telescope.lua<CR>", "Neo[V]im [C]onfig [T]elescope.lua")
@@ -122,8 +65,8 @@ map('n', '<C-w>f', function ()
   vim.cmd('tabclose #')
 end, '[F]ullscreen window')
 
--- map("n", "Q", ":q!<CR>", "Quit file without writing")
--- map("n", "q", "<Nop>") -- This is infuriating
+map("n", "Q", ":q!<CR>", "Quit file without writing")
+map("n", "q", "<Nop>") -- This is infuriating
 map("n", "<C-s>", ":w<CR>", "Write file")
 
 -- Git Fugitive
@@ -219,6 +162,7 @@ map('n', '<leader>lf', vim.diagnostic.open_float, "Open [F]loating diagnostic me
 -- Nvim Tree
 cat('NvimTree')
 map("n", "<leader>e", ":NvimTreeToggle<CR>", 'Open [E]xplorer')
+map('n', '<leader>E', ':NvimTreeFocus<CR>', 'Focus [E]xplorer')
 
 -- Ufo (folding)
 cat('UFO')
