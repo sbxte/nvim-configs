@@ -120,8 +120,8 @@ map('n', '<C-w>f', function ()
   vim.cmd('tabclose #')
 end, '[F]ullscreen window')
 
-map("n", "Q", ":q!<CR>", "Quit file without writing")
-map("n", "q", "<Nop>") -- This is infuriating
+-- map("n", "Q", ":q!<CR>", "Quit file without writing")
+-- map("n", "q", "<Nop>") -- This is infuriating
 map("n", "<C-s>", ":w<CR>", "Write file")
 
 -- Git Fugitive
