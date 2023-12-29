@@ -69,6 +69,9 @@ local plugins = {
     'folke/which-key.nvim',
 
 
+    -- Fidget (LSP notification and progress messages)
+    'j-hui/fidget.nvim',
+
     -- Comments
     'numToStr/Comment.nvim',
 

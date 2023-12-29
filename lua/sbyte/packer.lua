@@ -96,6 +96,9 @@ return require('packer').startup(function(use)
 
   use { 'folke/which-key.nvim', opts = {} } -- Uhhh. Keybinds?
 
+  -- Fidget (LSP notification and progress messages)
+  use 'j-hui/fidget.nvim'
+
 
   -- "gc" to comment visual regions/lines
   use { 'numToStr/Comment.nvim', opts = {} }
