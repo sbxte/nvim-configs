@@ -61,7 +61,8 @@ return {
             diagnostics = {
               globals = {
                 'vim',
-                'require'
+                'require',
+                'jit',
               }
             },
           },
