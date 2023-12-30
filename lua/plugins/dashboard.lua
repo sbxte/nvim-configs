@@ -3,6 +3,7 @@ return {
   {
     'glepnir/dashboard-nvim',
     priority = 100,
+    lazy = false,
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
