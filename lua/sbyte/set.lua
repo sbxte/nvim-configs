@@ -3,6 +3,7 @@ local tsbuiltin = require('telescope.builtin')
 local tsx = require('telescope').extensions
 local trouble = require('trouble')
 local gs = require('gitsigns')
+local leap = require('leap')
 
 local category = "Editor"
 local cat = function(name) category = name end
@@ -158,6 +159,11 @@ map('n', '<leader>lf', vim.diagnostic.open_float, "Open [F]loating diagnostic me
 -- map("[d", vim.diagnostic.goto_prev, "Goto next diag message")
 
 
+-- Leap
+cat('Leap')
+map('n', 's', function() leap.leap {} end, 'Forward')
+map('n', 'S', function() leap.leap { backward = true } end, 'Backward')
+map('n', 'gs', function() leap.leap { target_windows = require('leap.util').get_enterable_windows() } end, 'Across windows')
 
 -- Nvim Tree
 cat('NvimTree')
