@@ -20,7 +20,7 @@ map('n', "<leader>vvcc", function()
 end, 'Neo[V]im [C]onfig')
 map("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et Remaps.lua")
 map("n", "<leader>vvco", ":e ~/appdata/local/nvim/lua/sbyte/options.lua<CR>", "Neo[V]im [C]onfig [O]ption.lua")
-map("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/packer.lua<CR>", "Neo[V]im [C]onfig [P]acker.lua")
+map("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/package.lua<CR>", "Neo[V]im [C]onfig [P]ackage.lua")
 map('n', '<leader>vvci', ':e ~/appdata/local/nvim/lua/sbyte/init.lua<CR>', 'Neo[V]im [C]onfig [I]nit.lua')
 map('n', '<leader>vvca', function()
   require('telescope').extensions.file_browser.file_browser { path = '~/appdata/local/nvim/lua/plugins/' }
