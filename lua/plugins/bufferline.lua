@@ -11,7 +11,7 @@ return {
           indicator = {
             style = 'icon'
           },
-          tab_size = 20,
+          tab_size = 14,
           truncate_names = false,
           diagnostics = 'nvim_lsp',
           diagnostics_indicator = function(count, level, diagnostics_dict, context)
