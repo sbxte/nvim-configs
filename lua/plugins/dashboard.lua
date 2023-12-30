@@ -3,8 +3,25 @@ return {
   {
     'glepnir/dashboard-nvim',
     priority = 100,
-    init = function()
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
       require('dashboard').setup {
+        disable_move = false,    --  default is false disable move keymap for hyper
+        shortcut_type = 'number',   --  shorcut type 'letter' or 'number'
+        change_to_vcs_root = false, -- default is false,for open file in hyper mru. it will change to the root of vcs
+        hide = {
+          statusline = true,    -- hide statusline default is true
+          tabline = false,       -- hide the tabline
+          winbar = false,        -- hide winbar
+        },
+        -- preview = {
+        --   command,       -- preview command
+        --   file_path,     -- preview file path
+        --   file_height,   -- preview file height
+        --   file_width,    -- preview file width
+        -- },
         theme = 'hyper',
         config = {
           week_header = {
