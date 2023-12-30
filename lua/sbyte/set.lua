@@ -70,45 +70,6 @@ map("n", "Q", ":q!<CR>", "Quit file without writing")
 map("n", "q", "<Nop>") -- This is infuriating
 map("n", "<C-s>", ":w<CR>", "Write file")
 
--- Git Fugitive
-cat("GitFugitive")
-map("n", "<leader>gg", vim.cmd.Git, "Open [G]it");
-
--- Gitsigns
-map({'n', 'v'}, '<leader>gs', gs.stage_hunk, 'Stage hunk')
-map({'n', 'v'}, '<leader>gr', gs.reset_hunk, 'Reset hunk')
-map('n', '<leader>gS', gs.stage_buffer, 'Stage buffer')
-map('n', '<leader>gu', gs.undo_stage_hunk, 'Undo stage hunk')
-map('n', '<leader>gr', gs.reset_hunk, 'Reset hunk')
-map('n', '<leader>gR', gs.reset_buffer, 'Reset buffer')
-map('n', '<leader>gp', gs.preview_hunk, 'Preview hunk')
-map('n', '<leader>gb', gs.toggle_current_line_blame, 'Toggle blame line')
-map('n', '<leader>gB', function() gs.blame_line{full=true} end, 'Toggle blame')
-map('n', '<leader>gd', gs.diffthis, 'Diff')
-map('n', '<leader>gD', function() gs.diffthis('~') end, 'Diff ~')
--- map('n', '<leader>td', gs.toggle_deleted)
-
-
-
--- Todo comments
-cat("TodoComment")
-do
-  local keywords = { "TODO", "INFO", "ERROR", "WARNING" }
-  local todo = require('todo-comments')
-  map("n", "<leader>t[", function() todo.jump_prev { keywords } end, "Previous todo comment")
-  map("n", "<leader>t]", function() todo.jump_next { keywords } end, "Next todo comment")
-end
-
-
--- Trouble
-cat("Trouble")
-map("n", "<leader>xx", trouble.toggle, "Toggle menu")
-map("n", "<leader>xq", function() trouble.toggle('quickfix') end, "Open [Q]uickfix")
-map("n", "<leader>xw", function() trouble.toggle('workspace_diagnostics') end, "Open [W]orkspace diagnostics")
-map('n', '<leader>xd', function() trouble.toggle('document_diagnostics') end, 'Open [D]ocument diagnostics')
-map('n', '<leader>xl', function() trouble.toggle('loclist') end, 'Open [L]ocation list')
-map('n', '<leader>xr', function() trouble.toggle('lsp_references') end, 'Lsp [R]eferences')
-
 -- Telescope
 cat('Telescope')
 
@@ -144,6 +105,7 @@ map('n', '<leader>st', tsx['telescope-tabs'].list_tabs, '[S]earch [T]abs')
 
 
 -- LSP
+cat('LSP')
 map('n', "<C-k>", vim.lsp.buf.signature_help, 'Signature Documentation (Help)')
 map('n', "K", vim.lsp.buf.hover, "Hover Documentation")
 map('n', '<leader>ld', tsbuiltin.lsp_definitions, "[L]sp [D]efinition")
@@ -174,3 +136,41 @@ map('n', '<leader>E', ':NvimTreeFocus<CR>', 'Focus [E]xplorer')
 cat('UFO')
 map("n", "zR", require("ufo").openAllFolds, "Open all folds")
 map("n", "zM", require("ufo").closeAllFolds, "Close all folds")
+
+-- Git Fugitive
+cat("GitFugitive")
+map("n", "<leader>gg", vim.cmd.Git, "Open [G]it");
+
+-- Gitsigns
+map({'n', 'v'}, '<leader>gs', gs.stage_hunk, 'Stage hunk')
+map({'n', 'v'}, '<leader>gr', gs.reset_hunk, 'Reset hunk')
+map('n', '<leader>gS', gs.stage_buffer, 'Stage buffer')
+map('n', '<leader>gu', gs.undo_stage_hunk, 'Undo stage hunk')
+map('n', '<leader>gr', gs.reset_hunk, 'Reset hunk')
+map('n', '<leader>gR', gs.reset_buffer, 'Reset buffer')
+map('n', '<leader>gp', gs.preview_hunk, 'Preview hunk')
+map('n', '<leader>gb', gs.toggle_current_line_blame, 'Toggle blame line')
+map('n', '<leader>gB', function() gs.blame_line{full=true} end, 'Toggle blame')
+map('n', '<leader>gd', gs.diffthis, 'Diff')
+map('n', '<leader>gD', function() gs.diffthis('~') end, 'Diff ~')
+-- map('n', '<leader>td', gs.toggle_deleted)
+
+-- Todo comments
+cat("TodoComment")
+do
+  local keywords = { "TODO", "INFO", "ERROR", "WARNING" }
+  local todo = require('todo-comments')
+  map("n", "<leader>t[", function() todo.jump_prev { keywords } end, "Previous todo comment")
+  map("n", "<leader>t]", function() todo.jump_next { keywords } end, "Next todo comment")
+end
+
+-- Trouble
+cat("Trouble")
+map("n", "<leader>xx", trouble.toggle, "Toggle menu")
+map("n", "<leader>xq", function() trouble.toggle('quickfix') end, "Open [Q]uickfix")
+map("n", "<leader>xw", function() trouble.toggle('workspace_diagnostics') end, "Open [W]orkspace diagnostics")
+map('n', '<leader>xd', function() trouble.toggle('document_diagnostics') end, 'Open [D]ocument diagnostics')
+map('n', '<leader>xl', function() trouble.toggle('loclist') end, 'Open [L]ocation list')
+map('n', '<leader>xr', function() trouble.toggle('lsp_references') end, 'Lsp [R]eferences')
+
+
