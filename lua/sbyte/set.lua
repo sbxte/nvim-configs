@@ -178,3 +178,48 @@ map('n', '<leader>xl', function() trouble.toggle('loclist') end, 'Open [L]ocatio
 map('n', '<leader>xr', function() trouble.toggle('lsp_references') end, 'Lsp [R]eferences')
 
 
+
+-- Auto Commands
+local autocmd = vim.api.nvim_create_autocmd
+local editing = vim.api.nvim_create_augroup('editing', {})
+
+autocmd({"BufWritePre"}, { -- Automatically remove all trailing whitespaces
+    group = editing,
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
+})
+
+-- User Commands
+local usercmd = vim.api.nvim_create_user_command
+
+-- TODO: have autocomplete
+usercmd('License', function(opts)
+	local open = io.open
+
+	local function read_file(path)
+    local file = open(path, "rb") -- r read mode and b binary mode
+    if not file then return nil end
+    local content = file:read "*a" -- *a or *all reads the whole file
+    file:close()
+    return content
+	end
+
+	local license = read_file(vim.fn.expand(nvimpath) .. "/licenses/" .. opts.args .. ".txt")
+	if license == nil then
+		vim.cmd('echo "Invalid License"')
+		return
+	end
+	license = license:gsub("<<YEAR>>", os.date("%Y"))
+	license = license:gsub("<<NAME>>", "SByte")
+
+	local currentdir = vim.fn.getcwd()
+	local file = io.open(currentdir .. "/LICENSE", "w+")
+	if not file then return end
+	file:write(license)
+	file:close()
+end,
+	{ nargs = 1,
+		-- complete = function(ArgLead, CmdLine, CursorPos)
+		-- 	return licenses
+		-- end
+})
