@@ -1,9 +1,10 @@
--- Custom remaps
 local tsbuiltin = require('telescope.builtin')
 local tsx = require('telescope').extensions
 local trouble = require('trouble')
 local gs = require('gitsigns')
 local leap = require('leap')
+
+local nvimpath = "~/appdata/local/nvim"
 
 local category = "Editor"
 local cat = function(name) category = name end
@@ -15,18 +16,19 @@ local map = function(mode, l, r, desc)
   vim.keymap.set(mode, l, r, { desc = desc, remap = false, silent = true })
 end
 
+-- Custom remaps
 map('n', "<leader>vvcc", function()
-  require('telescope').extensions.file_browser.file_browser { path = '~/appdata/local/nvim/' }
+  require('telescope').extensions.file_browser.file_browser { path = nvimpath }
 end, 'Neo[V]im [C]onfig')
-map("n", "<leader>vvcs", ":e ~/appdata/local/nvim/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et Remaps.lua")
-map("n", "<leader>vvco", ":e ~/appdata/local/nvim/lua/sbyte/options.lua<CR>", "Neo[V]im [C]onfig [O]ption.lua")
-map("n", "<leader>vvcp", ":e ~/appdata/local/nvim/lua/sbyte/package.lua<CR>", "Neo[V]im [C]onfig [P]ackage.lua")
-map('n', '<leader>vvci', ':e ~/appdata/local/nvim/lua/sbyte/init.lua<CR>', 'Neo[V]im [C]onfig [I]nit.lua')
+map("n", "<leader>vvcs", ":e " .. nvimpath .. "/lua/sbyte/set.lua<CR>", "Neo[V]im [C]onfig [S]et Remaps.lua")
+map("n", "<leader>vvco", ":e " .. nvimpath .. "/lua/sbyte/options.lua<CR>", "Neo[V]im [C]onfig [O]ption.lua")
+map("n", "<leader>vvcp", ":e " .. nvimpath .. "/lua/sbyte/package.lua<CR>", "Neo[V]im [C]onfig [P]ackage.lua")
+map('n', '<leader>vvci', ':e " .. nvimpath .. "/lua/sbyte/init.lua<CR>', 'Neo[V]im [C]onfig [I]nit.lua')
 map('n', '<leader>vvca', function()
   require('telescope').extensions.file_browser.file_browser { path = '~/appdata/local/nvim/lua/plugins/' }
 end, 'Neo[V]im [C]onfig [A]fter Lua')
-map("n", "<leader>vvcl", ":e ~/appdata/local/nvim/lua/plugins/lsp.lua<CR>", "Neo[V]im [C]onfig [L]sp.lua")
-map("n", "<leader>vvct", ":e ~/appdata/local/nvim/lua/plugins/telescope.lua<CR>", "Neo[V]im [C]onfig [T]elescope.lua")
+map("n", "<leader>vvcl", ":e " .. nvimpath .. "/lua/plugins/lsp.lua<CR>", "Neo[V]im [C]onfig [L]sp.lua")
+map("n", "<leader>vvct", ":e " .. nvimpath .. "/lua/plugins/telescope.lua<CR>", "Neo[V]im [C]onfig [T]elescope.lua")
 
 map("v", "J", ":m '>+1<CR>gv=gv", "Move selected lines down")
 map("v", "K", ":m '<-2<CR>gv=gv", "Move selected lines up")
