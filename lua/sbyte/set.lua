@@ -99,6 +99,7 @@ map('n', '<leader>sw', tsbuiltin.grep_string, '[S]earch current [W]ord')
 map('n', '<leader>sg', tsbuiltin.live_grep, '[S]earch [G]rep')
 map('n', '<leader>sd', tsbuiltin.diagnostics, '[S]earch [D]iagnostics')
 map('n', '<leader>sk', tsbuiltin.keymaps, '[S]earch [K]eymaps') -- I know there probably exists a better way of doing this but am too lazy to find out
+map('n', '<leader>sb', tsbuiltin.buffers, '[S]earch [B]uffers')
 map('n', '<leader>u', tsx.undo.undo, 'Telescope [U]ndo')
 map('n', '<leader>se', tsx.file_browser.file_browser, '[S]earch File Browser ([E]xplorer)')
 map('n', '<leader>st', tsx['telescope-tabs'].list_tabs, '[S]earch [T]abs')
