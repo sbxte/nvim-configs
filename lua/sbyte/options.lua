@@ -1,28 +1,27 @@
 vim.g.mapleader = " "
 vim.g.guicursor = {
-  n = "block",
-  v = "block",
-  c = "block",
-  i = "ver25",
-  ci = "ver25",
-  ve = "ver25",
-  r = "hor20",
-  cr = "hor20",
-  o = "hor50",
-  a = "blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-  sm = "block-blinkwait175-blinkoff150-blinkon175"
+	n = "block",
+	v = "block",
+	c = "block",
+	i = "ver25",
+	ci = "ver25",
+	ve = "ver25",
+	r = "hor20",
+	cr = "hor20",
+	o = "hor50",
+	a = "blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+	sm = "block-blinkwait175-blinkoff150-blinkon175"
 }
 
 vim.opt.nu = true
 vim.opt.rnu = true
 
 vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.expandtab = false -- Use tabs instead of spaces
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
-vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
-
-vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
@@ -56,4 +55,3 @@ vim.o.fixeol = true
 vim.o.fileformat = 'unix'
 
 vim.o.shell = 'pwsh'
-
