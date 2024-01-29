@@ -31,8 +31,7 @@ map("n", "<leader>vvct", ":e ~/appdata/local/nvim/lua/plugins/telescope.lua<CR>"
 map("v", "J", ":m '>+1<CR>gv=gv", "Move selected lines down")
 map("v", "K", ":m '<-2<CR>gv=gv", "Move selected lines up")
 
-map('n', 'H', '0', 'Start of line')
-map('n', 'L', '$', 'End of line')
+map("n", "<leader>o", "ddO", "Clear and new line")
 
 map("n", "J", "mzJ`zdmz", "Custom [J]")
 map("n", "<C-d>", "<C-d>zz", "Scroll down and center cursor")
@@ -43,6 +42,7 @@ map("v", "<leader>yp", "\"_d\"+p", "Paste from clipboard")
 map("v", "<leader>yP", "\"_d\"+P", "Paste from clipboard")
 map("n", "<leader>yp", "\"+p", "Paste from clipboard")
 map("n", "<leader>yP", "\"+P", "Paste from clipboard")
+map("n", "<leader>Y", 'mzggVG"+y`zdmz', "Yank everything to clipboard")
 
 map("n", "t]", ":bn<CR>", "Next buffer")
 map("n", "t[", ":bp<CR>", "Previous buffer")
@@ -123,9 +123,9 @@ map('n', '<leader>lf', vim.diagnostic.open_float, "Open [F]loating diagnostic me
 
 -- Leap
 cat('Leap')
-map('n', 's', function() leap.leap {} end, 'Forward')
-map('n', 'S', function() leap.leap { backward = true } end, 'Backward')
-map('n', 'gs', function() leap.leap { target_windows = require('leap.util').get_enterable_windows() } end, 'Across windows')
+map({'n','v'}, 's', function() leap.leap {} end, 'Forward')
+map({'n','v'}, 'S', function() leap.leap { backward = true } end, 'Backward')
+map({'n','v'}, 'gs', function() leap.leap { target_windows = require('leap.util').get_enterable_windows() } end, 'Across windows')
 
 -- Nvim Tree
 cat('NvimTree')
@@ -142,6 +142,7 @@ cat("GitFugitive")
 map("n", "<leader>gg", vim.cmd.Git, "Open [G]it");
 
 -- Gitsigns
+cat("Gitsigns")
 map({'n', 'v'}, '<leader>gs', gs.stage_hunk, 'Stage hunk')
 map({'n', 'v'}, '<leader>gr', gs.reset_hunk, 'Reset hunk')
 map('n', '<leader>gS', gs.stage_buffer, 'Stage buffer')
