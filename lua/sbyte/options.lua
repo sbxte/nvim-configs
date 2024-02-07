@@ -52,7 +52,7 @@ vim.o.foldenable = true
 vim.o.autoread = true
 
 vim.o.fixeol = true
-vim.o.fileformat = 'unix'
+vim.o.fileformat = 'dos'
 
 vim.o.shell = 'pwsh'
 
