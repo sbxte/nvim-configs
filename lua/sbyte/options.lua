@@ -55,3 +55,10 @@ vim.o.fixeol = true
 vim.o.fileformat = 'unix'
 
 vim.o.shell = 'pwsh'
+
+
+
+-- Language specific settings
+
+-- Rust
+vim.g.rust_recommended_style = false
