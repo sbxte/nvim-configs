@@ -14,6 +14,7 @@ local editing = vim.api.nvim_create_augroup("editing", {})
 
 -- User Commands
 local usercmd = vim.api.nvim_create_user_command
+local nvimpath = vim.fn.stdpath("config")
 
 -- TODO: have autocomplete
 usercmd("License", function(opts)
@@ -29,7 +30,7 @@ usercmd("License", function(opts)
 		return content
 	end
 
-	local license = read_file(vim.fn.expand(nvimpath) .. "/licenses/" .. opts.args .. ".txt")
+	local license = read_file(nvimpath .. "/licenses/" .. opts.args .. ".txt")
 	if license == nil then
 		vim.cmd('echo "Invalid License"')
 		return
