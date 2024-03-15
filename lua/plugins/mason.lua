@@ -6,7 +6,7 @@ return {
 				"stylua",
 				"shfmt",
 				"flake8",
-				"rust_analyzer",
+				"rust-analyzer",
 			},
 		},
 	},
