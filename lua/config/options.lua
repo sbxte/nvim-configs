@@ -58,7 +58,11 @@ vim.o.autoread = true
 vim.g.fixeol = true
 vim.g.fileformat = "DOS"
 
-vim.o.shell = "pwsh"
+if vim.loop.os_uname().sysname == "Linux" then
+	vim.o.shell = "zsh"
+else
+	vim.o.shell = "pwsh"
+end
 
 -- Language specific settings
 
