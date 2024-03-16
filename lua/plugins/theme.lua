@@ -84,9 +84,14 @@ return {
 		},
 	},
 	{
+		"folke/tokyonight.nvim",
+		opts = { style = "night" },
+	},
+	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "catppuccin-mocha",
+			-- colorscheme = "catppuccin-mocha",
+			colorscheme = "tokyonight-night",
 		},
 	},
 }
