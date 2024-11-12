@@ -41,6 +41,8 @@ vim.opt.scrolloff = 5
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
+vim.opt.clipboard = "" -- Do NOT use system clipboard by default
+
 vim.o.updatetime = 1250
 vim.o.timeout = true
 vim.o.timeoutlen = 500
