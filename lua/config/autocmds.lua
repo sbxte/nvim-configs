@@ -6,11 +6,11 @@
 local autocmd = vim.api.nvim_create_autocmd
 local editing = vim.api.nvim_create_augroup("editing", {})
 
--- autocmd({ "BufWritePre" }, { -- Automatically remove all trailing whitespaces
--- 	group = editing,
--- 	pattern = "*",
--- 	command = [[%s/\s\+$//e]],
--- })
+autocmd({ "BufWritePre" }, { -- Automatically remove all trailing whitespaces
+	group = editing,
+	pattern = "*",
+	command = [[%s/\s\+$//e]],
+})
 
 -- User Commands
 local usercmd = vim.api.nvim_create_user_command
