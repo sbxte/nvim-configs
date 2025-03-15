@@ -61,7 +61,7 @@ vim.g.fixeol = true
 vim.g.fileformat = "DOS"
 
 if vim.loop.os_uname().sysname == "Linux" then
-	vim.o.shell = "zsh"
+	vim.o.shell = "nu"
 else
 	vim.o.shell = "pwsh"
 end
