@@ -3,7 +3,9 @@ return {
 		"echasnovski/mini.pairs",
 		opts = {
 			mappings = {
-				["'"] = false, -- Because rust lifetimes use one single quote bruh
+				-- Annoying more than anything
+				["'"] = false,
+				['"'] = false,
 			},
 		},
 	},
