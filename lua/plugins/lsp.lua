@@ -17,6 +17,9 @@ return {
 							command = "clippy",
 							extraArgs = { "--no-deps" },
 						},
+						diagnostics = {
+							disabled = { "proc-macro-disabled" },
+						},
 						imports = {
 							granularity = {
 								group = "module",
