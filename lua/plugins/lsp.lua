@@ -14,8 +14,11 @@ return {
 						-- Add clippy lints for Rust.
 						checkOnSave = {
 							allFeatures = true,
-							command = "clippy",
-							extraArgs = { "--no-deps" },
+						},
+						check = {
+							-- Clippy is insanely slow to be constantly called in large projects
+							-- command = "clippy",
+							-- extraArgs = { "--no-deps" },
 						},
 						diagnostics = {
 							disabled = { "proc-macro-disabled" },
