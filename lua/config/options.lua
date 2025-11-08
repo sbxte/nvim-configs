@@ -57,7 +57,8 @@ vim.o.foldenable = true
 
 vim.o.autoread = true
 
-vim.g.fixeol = true
+vim.g.autoformat = false
+-- vim.g.fixeol = true
 vim.g.fileformat = "DOS"
 
 if vim.loop.os_uname().sysname == "Linux" then
@@ -65,6 +66,7 @@ if vim.loop.os_uname().sysname == "Linux" then
 else
 	vim.o.shell = "pwsh"
 end
+
 
 -- Language specific settings
 
