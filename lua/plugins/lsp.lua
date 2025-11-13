@@ -58,8 +58,9 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
-			server = {
+			servers = {
 				rust_analyzer = { enabled = false },
+				gdscript = { enabled = true, },
 			},
 		},
 	},
