@@ -61,6 +61,8 @@ vim.g.autoformat = false
 -- vim.g.fixeol = true
 vim.g.fileformat = "DOS"
 
+vim.g.editorconfig = true
+
 if vim.loop.os_uname().sysname == "Linux" then
 	vim.o.shell = "nu"
 else
