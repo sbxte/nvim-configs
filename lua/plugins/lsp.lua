@@ -61,6 +61,17 @@ return {
 			servers = {
 				rust_analyzer = { enabled = false },
 				gdscript = { enabled = true, },
+				clangd = {
+					cmd = {
+						"clangd",
+						"--background-index",
+						"--clang-tidy",
+						"--header-insertion=iwyu",
+						"--completion-style=detailed",
+						"--function-arg-placeholders=0",
+						"--fallback-style=llvm",
+					},
+				}
 			},
 		},
 	},
