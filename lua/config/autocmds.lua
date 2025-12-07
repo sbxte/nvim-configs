@@ -6,11 +6,14 @@
 local autocmd = vim.api.nvim_create_autocmd
 local editing = vim.api.nvim_create_augroup("editing", {})
 
-autocmd({ "BufWritePre" }, { -- Automatically remove all trailing whitespaces
-	group = editing,
-	pattern = "*",
-	command = [[%s/\s\+$//e]],
-})
+-- Use editorconfig or language-specific formatters instead, 
+-- had an issue with adventofcode (AOC) 2025 day 6 where trailing whitespaces actually mattered
+--
+-- autocmd({ "BufWritePre" }, { -- Automatically remove all trailing whitespaces
+-- 	group = editing,
+-- 	pattern = "*",
+-- 	command = [[%s/\s\+$//e]],
+-- })
 
 -- User Commands
 local usercmd = vim.api.nvim_create_user_command
