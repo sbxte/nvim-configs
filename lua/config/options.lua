@@ -45,7 +45,8 @@ vim.o.autoread = true
 -- Disabling this option means before every buffer write the formatter will be run
 vim.g.autoformat = false
 
-if vim.loop.os_uname().sysname == "Linux" then
+-- https://neovim.io/doc/user/luvref.html#uv.os_uname()
+if vim.uv.os_uname().sysname == "Linux" then
 	vim.o.shell = "nu"
 else
 	vim.o.shell = "pwsh"
