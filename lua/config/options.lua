@@ -2,53 +2,37 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-vim.g.mapleader = " "
-vim.g.guicursor = {
-	n = "block",
-	v = "block",
-	c = "block",
-	i = "ver25",
-	ci = "ver25",
-	ve = "ver25",
-	r = "hor20",
-	cr = "hor20",
-	o = "hor50",
-	a = "blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-	sm = "block-blinkwait175-blinkoff150-blinkon175",
-}
+vim.o.guicursor =
+	"a:block-lCursor,i-ci-ve:ver25,r-cr:hor20,o:hor50,sm:block-blinkwait175-blinkoff150-blinkon175"
 
-vim.opt.nu = true
-vim.opt.rnu = true
+vim.o.nu = true
+vim.o.rnu = true
 
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.expandtab = false -- Use tabs instead of spaces
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.o.autoindent = true
+vim.o.smartindent = true
+vim.o.expandtab = false -- Use tabs instead of spaces
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 
-vim.opt.wrap = false
+vim.o.wrap = false
 
-vim.opt.swapfile = false
-vim.opt.backup = false
+vim.o.swapfile = false
+vim.o.backup = false
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+vim.o.hlsearch = true
+vim.o.incsearch = true
 
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 
-vim.opt.scrolloff = 5
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+vim.o.scrolloff = 5
+vim.o.signcolumn = "yes"
 
-vim.opt.clipboard = "" -- Do NOT use system clipboard by default
+vim.o.clipboard = "" -- Do NOT use system clipboard by default
 
 vim.o.updatetime = 1250
 vim.o.timeout = true
 vim.o.timeoutlen = 500
-
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
 
 vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -57,18 +41,11 @@ vim.o.foldenable = true
 
 vim.o.autoread = true
 
-vim.g.autoformat = false
--- vim.g.fixeol = true
-vim.g.fileformat = "DOS"
-
-vim.g.editorconfig = true
-
 if vim.loop.os_uname().sysname == "Linux" then
 	vim.o.shell = "nu"
 else
 	vim.o.shell = "pwsh"
 end
-
 
 -- Language specific settings
 
