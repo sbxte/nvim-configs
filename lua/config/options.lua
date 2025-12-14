@@ -41,6 +41,10 @@ vim.o.foldenable = true
 
 vim.o.autoread = true
 
+-- LazyVim's auto format 
+-- Disabling this option means before every buffer write the formatter will be run
+vim.g.autoformat = false
+
 if vim.loop.os_uname().sysname == "Linux" then
 	vim.o.shell = "nu"
 else
