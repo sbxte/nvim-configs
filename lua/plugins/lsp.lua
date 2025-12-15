@@ -60,7 +60,7 @@ return {
 		opts = {
 			servers = {
 				rust_analyzer = { enabled = false },
-				gdscript = { enabled = true, },
+				gdscript = { enabled = true },
 				clangd = {
 					cmd = {
 						"clangd",
@@ -71,7 +71,7 @@ return {
 						"--function-arg-placeholders=0",
 						"--fallback-style=llvm",
 					},
-				}
+				},
 			},
 		},
 	},
