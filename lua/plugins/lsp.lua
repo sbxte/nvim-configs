@@ -83,6 +83,7 @@ return {
 			-- "nvim-tree/nvim-tree.lua",
 			"nvim-neo-tree/neo-tree.nvim",
 			-- "simonmclean/triptych.nvim"
+			"stevearc/oil.nvim"
 		},
 		opts = {
 			-- used to see debug logs in file `vim.fn.stdpath("cache") .. lsp-file-operations.log`
