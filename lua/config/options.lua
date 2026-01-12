@@ -47,7 +47,7 @@ vim.g.autoformat = false
 
 -- https://neovim.io/doc/user/luvref.html#uv.os_uname()
 if vim.uv.os_uname().sysname == "Linux" then
-	vim.o.shell = "nu"
+	vim.o.shell = "zsh"
 else
 	vim.o.shell = "pwsh"
 end
