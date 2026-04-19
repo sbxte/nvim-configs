@@ -72,6 +72,16 @@ return {
 						"--fallback-style=llvm",
 					},
 				},
+				tailwindcss = {
+					filetypes = {
+						"html",
+						"css",
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+					},
+				},
 			},
 		},
 	},
