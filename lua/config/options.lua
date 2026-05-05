@@ -43,7 +43,7 @@ vim.o.autoread = true
 
 -- LazyVim's auto format 
 -- Disabling this option means before every buffer write the formatter will be run
-vim.g.autoformat = false
+vim.g.autoformat = true
 
 -- https://neovim.io/doc/user/luvref.html#uv.os_uname()
 if vim.uv.os_uname().sysname == "Linux" then
