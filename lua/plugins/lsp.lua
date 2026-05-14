@@ -90,6 +90,17 @@ return {
 						},
 					},
 				},
+				arduino_language_server = {
+					cmd = {
+						"arduino-language-server",
+						"-cli",
+						"arduino-cli",
+						"-cli-config",
+						vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+						"-clangd",
+						vim.fn.expand("~/.local/share/nvim/mason/bin/clangd"),
+					},
+				},
 			},
 		},
 	},
