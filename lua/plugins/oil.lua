@@ -25,7 +25,7 @@ return {
 				["gp"] = { "actions.preview" },
 				["<C-c>"] = { "actions.close", mode = "n" },
 				["<leader>E"] = { "actions.close", mode = "n" },
-				["r"] = { "actions.refresh" },
+				["gr"] = { "actions.refresh" },
 				["-"] = { "actions.parent", mode = "n" },
 				["_"] = { "actions.open_cwd", mode = "n" },
 				["`"] = { "actions.cd", mode = "n" },
