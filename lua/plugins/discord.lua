@@ -1,3 +1,13 @@
+local is_hidden = function()
+	local files = vim.fs.find(".nodcrpc", {
+		path = vim.api.nvim_buf_get_name(0),
+		upward = true,
+		limit = math.huge,
+	})
+
+	return #files > 0
+end
+
 return {
 	{
 		"vyfor/cord.nvim",
@@ -13,12 +23,24 @@ return {
 			},
 			text = {
 				editing = function(opts)
-					-- Hide certain file names
-					local hidden_files = { "markdown", "md" }
-					if vim.list_contains(hidden_files, opts.filetype) then
-						return "Editing " .. opts.filetype .. " file"
+					if is_hidden() then
+						return "Editing file"
 					else
 						return "Editing " .. opts.filename
+					end
+				end,
+				workspace = function(opts)
+					if is_hidden() then
+						return "Wololo"
+					else
+						return "In " .. opts.workspace
+					end
+				end,
+				viewing = function(opts)
+					if is_hidden() then
+						return "Viewing file"
+					else
+						return "Viewing " .. opts.filename
 					end
 				end,
 			},
