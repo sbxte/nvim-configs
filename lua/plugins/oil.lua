@@ -34,6 +34,34 @@ return {
 				["gx"] = { "actions.open_external" },
 				["g."] = { "actions.toggle_hidden", mode = "n" },
 				["g\\"] = { "actions.toggle_trash", mode = "n" },
+				["gc"] = {
+					callback = function()
+						local oil = require("oil")
+						local entry = oil.get_cursor_entry()
+						local cwd = oil.get_current_dir()
+						if not entry or not cwd then
+							return
+						end
+						local abs_path = vim.fs.joinpath(cwd, entry.name)
+						vim.fn.setreg("+", abs_path)
+						vim.notify("Copied " .. abs_path .. " to system clipboard", vim.log.levels.INFO)
+					end,
+					mode = "n",
+					desc = "Copy absolute path of the current entry at the cursor into system clipboard",
+				},
+				["gC"] = {
+					callback = function()
+						local oil = require("oil")
+						local cwd = oil.get_current_dir()
+						if not cwd then
+							return
+						end
+						vim.fn.setreg("+", cwd)
+						vim.notify("Copied " .. cwd .. " to system clipboard", vim.log.levels.INFO)
+					end,
+					mode = "n",
+					desc = "Copy current working directory into system clipboard",
+				},
 			},
 			use_default_keymaps = false,
 			watch_for_changes = true,
