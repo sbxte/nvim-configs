@@ -199,6 +199,12 @@ return {
 				-- | full   | uses all default values    |
 				style = "full",
 			},
+			win_options = {
+				wrap = {
+					default = false, -- Disables wrap in rendered view
+					rendered = false,
+				},
+			},
 		},
 		ft = { "markdown", "norg", "rmd", "org", "codecompanion" },
 		config = function(_, opts)
