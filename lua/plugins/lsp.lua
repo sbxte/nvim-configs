@@ -1,5 +1,57 @@
 return {
 	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				rust_analyzer = { enabled = false },
+				gdscript = { enabled = true },
+				clangd = {
+					cmd = {
+						"clangd",
+						"--background-index",
+						"--clang-tidy",
+						"--header-insertion=iwyu",
+						"--completion-style=detailed",
+						"--function-arg-placeholders=0",
+						"--fallback-style=llvm",
+					},
+				},
+				tailwindcss = {
+					filetypes = {
+						"html",
+						"css",
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+					},
+				},
+				pyright = {
+					settings = {
+						python = {
+							venvPath = ".venv",
+							pythonPath = ".venv/bin/python",
+						},
+					},
+				},
+				arduino_language_server = {
+					cmd = {
+						"arduino-language-server",
+						"-cli",
+						"arduino-cli",
+						"-cli-config",
+						vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+						"-clangd",
+						vim.fn.expand("~/.local/share/nvim/mason/bin/clangd"),
+					},
+				},
+			},
+		},
+	},
+
+	-- Rust LSP
+
+	{
 		"mrcjkb/rustaceanvim",
 		opts = {
 			server = {
@@ -55,55 +107,9 @@ return {
 			},
 		},
 	},
-	{
-		"neovim/nvim-lspconfig",
-		opts = {
-			servers = {
-				rust_analyzer = { enabled = false },
-				gdscript = { enabled = true },
-				clangd = {
-					cmd = {
-						"clangd",
-						"--background-index",
-						"--clang-tidy",
-						"--header-insertion=iwyu",
-						"--completion-style=detailed",
-						"--function-arg-placeholders=0",
-						"--fallback-style=llvm",
-					},
-				},
-				tailwindcss = {
-					filetypes = {
-						"html",
-						"css",
-						"javascript",
-						"javascriptreact",
-						"typescript",
-						"typescriptreact",
-					},
-				},
-				pyright = {
-					settings = {
-						python = {
-							venvPath = ".venv",
-							pythonPath = ".venv/bin/python",
-						},
-					},
-				},
-				arduino_language_server = {
-					cmd = {
-						"arduino-language-server",
-						"-cli",
-						"arduino-cli",
-						"-cli-config",
-						vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
-						"-clangd",
-						vim.fn.expand("~/.local/share/nvim/mason/bin/clangd"),
-					},
-				},
-			},
-		},
-	},
+
+	-- File Manager
+
 	{
 		"antosha417/nvim-lsp-file-operations",
 		dependencies = {
@@ -133,6 +139,9 @@ return {
 			require("lsp-file-operations").setup(opts)
 		end,
 	},
+
+	-- Markdown LSP
+
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = {
