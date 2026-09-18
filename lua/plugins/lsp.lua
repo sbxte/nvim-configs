@@ -235,4 +235,24 @@ return {
 			vim.cmd([[do FileType]])
 		end,
 	},
+
+	-- Java LSP
+
+	{
+		"mfussenegger/nvim-jdtls",
+		opts = function(_, opts)
+			-- Safeguard to ensure opts.jdtls exists
+			opts.jdtls = opts.jdtls or {}
+			opts.jdtls.settings = vim.tbl_deep_extend("force", opts.jdtls.settings or {}, {
+				java = {
+					inlayHints = {
+						parameterNames = {
+							enabled = "none",
+						},
+					},
+				},
+			})
+			return opts
+		end,
+	},
 }
