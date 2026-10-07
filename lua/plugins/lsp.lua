@@ -259,6 +259,7 @@ return {
 			default_theme = "dark", -- "dark" or "light"; initial preview theme
 			debounce_ms = 300,
 			mermaid_elk = true,
+			custom_css = "~/.config/nvim/mdkite.css",
 		},
 	},
 
