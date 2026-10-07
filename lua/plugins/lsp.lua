@@ -261,6 +261,20 @@ return {
 			mermaid_elk = true,
 			custom_css = "~/.config/nvim/mdkite.css",
 		},
+		keys = {
+			{
+				"<leader>mks",
+				"<cmd>MdKite start<CR>",
+				desc = "Start MdKite preview",
+				expr = false,
+			},
+			{
+				"<leader>mkS",
+				"<cmd>MdKite stop<CR>",
+				desc = "Stop MdKite preview",
+				expr = false,
+			},
+		},
 	},
 
 	-- Java LSP
