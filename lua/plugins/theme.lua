@@ -73,7 +73,7 @@ return {
 				},
 				navic = { enabled = true, custom_bg = "lualine" },
 				neotest = true,
-				neotree = true,
+				neotree = false,
 				noice = true,
 				notify = true,
 				semantic_tokens = true,

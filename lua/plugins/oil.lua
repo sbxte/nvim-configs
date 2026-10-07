@@ -5,6 +5,13 @@ local in_oil_buf = function()
 	return start == 1
 end
 
+local open_oil = function()
+	if in_oil_buf() then
+		return
+	end
+	require("oil").open(nil, {}, nil)
+end
+
 return {
 	{
 		"stevearc/oil.nvim",
@@ -25,7 +32,8 @@ return {
 				["gt"] = { "actions.select", opts = { tab = true } },
 				["gp"] = { "actions.preview" },
 				["<C-c>"] = { "actions.close", mode = "n" },
-				["<leader>E"] = { "actions.close", mode = "n" },
+				["<leader>e"] = { "actions.close", mode = "n" },
+				["<leader>fe"] = { "actions.close", mode = "n" },
 				["gr"] = { "actions.refresh" },
 				["-"] = { "actions.parent", mode = "n" },
 				["_"] = { "actions.open_cwd", mode = "n" },
@@ -68,27 +76,8 @@ return {
 			watch_for_changes = true,
 		},
 		keys = {
-			{
-				"<leader>e",
-				function()
-					require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
-				end,
-				desc = "Explorer Neotree",
-				expr = false,
-			},
-			{
-				"<leader>E",
-				function()
-					if in_oil_buf() then
-						return
-					end
-					require("oil").open(nil, {}, nil)
-				end,
-				desc = "Explorer Oil",
-				expr = false,
-			},
-			{ "<leader>fe", "<leader>e", desc = "Explorer Neotree", expr = true },
-			{ "<leader>fE", "<leader>E", desc = "Explorer Oil", expr = true },
+			{ "<leader>e", open_oil, desc = "Explorer Oil", expr = false },
+			{ "<leader>fe", open_oil, desc = "Explorer Oil", expr = false },
 		},
 		config = function(_, opts)
 			local wk = require("which-key")
@@ -117,11 +106,6 @@ return {
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		keys = {
-			{ "<leader>e", false },
-			{ "<leader>E", false },
-			{ "<leader>fe", false },
-			{ "<leader>fE", false },
-		},
+		enabled = false,
 	},
 }
