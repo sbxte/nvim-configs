@@ -258,6 +258,7 @@ return {
 			open_browser = true,
 			default_theme = "dark", -- "dark" or "light"; initial preview theme
 			debounce_ms = 300,
+			mermaid_elk = true,
 		},
 	},
 
